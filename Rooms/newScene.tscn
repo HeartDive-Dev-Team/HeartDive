@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/tileset-1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Player/obj_Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/texttemplate.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="testRoom1" type="Node2D"]
+position = Vector2( 16, 0 )
+
+[node name="obj_Player" parent="." instance=ExtResource( 3 )]
+
+[node name="MSGTest" type="StaticBody2D" parent="."]
+position = Vector2( 240, 176 )
+
+[node name="Sprite" type="Sprite" parent="MSGTest"]
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MSGTest"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 0, 1, 196613, 851972, 1, 1, 851973, 1, 65536, 851974, 1, 65536, 851975, 1, 65536, 851976, 1, 65536, 851977, 1, 65536, 851978, 1, 65536, 851979, 1, 65536, 851980, 1, 65536, 851981, 1, 65536, 851982, 1, 65536, 851983, 1, 65536, 851984, 1, 65536, 851985, 1, 65536, 851986, 1, 65536, 851987, 1, 65536, 851988, 1, 2, 917508, 1, 131073, 917509, 1, 196619, 917510, 1, 196619, 917511, 1, 196619, 917512, 1, 196619, 917513, 1, 196619, 917514, 1, 196619, 917515, 1, 196619, 917516, 1, 196619, 917517, 1, 196619, 917518, 1, 196619, 917519, 1, 196619, 917520, 1, 196619, 917521, 1, 196619, 917522, 1, 196619, 917523, 1, 196619, 917524, 1, 131074, 983044, 1, 65537, 983045, 1, 131072, 983046, 1, 131072, 983047, 1, 131072, 983048, 1, 131072, 983049, 1, 131072, 983050, 1, 131072, 983051, 1, 131072, 983052, 1, 131072, 983053, 1, 131072, 983054, 1, 131072, 983055, 1, 131072, 983056, 1, 131072, 983057, 1, 131072, 983058, 1, 131072, 983059, 1, 131072, 983060, 1, 65538 )

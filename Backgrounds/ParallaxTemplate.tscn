@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Backgrounds/BG_Zone1.tscn" type="PackedScene" id=1]
+
+[node name="Background" type="CanvasLayer"]
+layer = -10
+offset = Vector2( 0, -32 )
+transform = Transform2D( 1, 0, 0, 1, 0, -32 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 864, 480 )
+
+[node name="BG_Zone1" type="Node2D" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
+z_index = -10

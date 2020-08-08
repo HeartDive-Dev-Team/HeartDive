@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/HD OST - Spawn_2.ogg-39ffea7ea7cc99cf73b957775218080c.oggstr"
+
+[deps]
+
+source_file="res://Music/HD OST - Spawn_2.ogg"
+dest_files=[ "res://.import/HD OST - Spawn_2.ogg-39ffea7ea7cc99cf73b957775218080c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

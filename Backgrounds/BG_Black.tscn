@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/pixel.png" type="Texture" id=1]
+
+[node name="BG" type="Sprite"]
+position = Vector2( 1.90735e-06, 0 )
+scale = Vector2( 864, 480 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 334, 56, 70, 44 )
+__meta__ = {
+"_edit_lock_": true
+}

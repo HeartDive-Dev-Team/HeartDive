@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AB OST - Welcome.ogg-aae8312a3441f7a19e477749a2361f64.oggstr"
+
+[deps]
+
+source_file="res://Music/AB OST - Welcome.ogg"
+dest_files=[ "res://.import/AB OST - Welcome.ogg-aae8312a3441f7a19e477749a2361f64.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/roomchangerIcon.png" type="Texture" id=1]
+[ext_resource path="res://Global Variables/roomChanger.gd" type="Script" id=2]
+
+[node name="roomChanger" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

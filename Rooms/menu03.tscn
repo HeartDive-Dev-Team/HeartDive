@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Backgrounds/BG_Black.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/TEACPSSB.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Objects/FadeIn-Classic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/menuCard template.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/menuSelect.png" type="Texture" id=5]
+[ext_resource path="res://Rooms/menu03.gd" type="Script" id=6]
+[ext_resource path="res://SFX Files/HD SFX - Select.wav" type="AudioStream" id=7]
+[ext_resource path="res://SFX Files/HD SFX - Start.wav" type="AudioStream" id=8]
+[ext_resource path="res://Objects/FadeOut-Classic.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SFX Files/HD SFX - Cancel.wav" type="AudioStream" id=10]
+
+[node name="menu03" type="Node2D"]
+script = ExtResource( 6 )
+roomGoto = "res://Rooms/StartPoint1.tscn"
+
+[node name="Texts" type="Node2D" parent="."]
+z_index = 4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Texts"]
+margin_left = 256.0
+margin_top = 8.0
+margin_right = 608.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 2 )
+text = "Select your Save File"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File A" type="Label" parent="Texts"]
+margin_left = 104.0
+margin_top = 80.0
+margin_right = 200.0
+margin_bottom = 120.0
+custom_fonts/font = ExtResource( 2 )
+text = "File A"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File B" type="Label" parent="Texts"]
+margin_left = 384.0
+margin_top = 80.0
+margin_right = 480.0
+margin_bottom = 114.0
+custom_fonts/font = ExtResource( 2 )
+text = "File B"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File C" type="Label" parent="Texts"]
+margin_left = 664.0
+margin_top = 80.0
+margin_right = 760.0
+margin_bottom = 114.0
+custom_fonts/font = ExtResource( 2 )
+text = "File C"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Descriptions" type="Node2D" parent="Texts"]
+
+[node name="FileADesc" type="Label" parent="Texts/Descriptions"]
+margin_left = 40.0
+margin_top = 296.0
+margin_right = 256.0
+margin_bottom = 416.0
+custom_fonts/font = ExtResource( 2 )
+text = "Empty"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileBDesc" type="Label" parent="Texts/Descriptions"]
+margin_left = 328.0
+margin_top = 296.0
+margin_right = 536.0
+margin_bottom = 416.0
+custom_fonts/font = ExtResource( 2 )
+text = "Empty"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileCDesc" type="Label" parent="Texts/Descriptions"]
+margin_left = 608.0
+margin_top = 296.0
+margin_right = 816.0
+margin_bottom = 416.0
+custom_fonts/font = ExtResource( 2 )
+text = "Empty"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+
+[node name="FadeIn-Classic" parent="." instance=ExtResource( 3 )]
+visible = false
+z_index = 10
+
+[node name="Cards" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cardA" type="Sprite" parent="Cards"]
+position = Vector2( 152, 264 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cardB" type="Sprite" parent="Cards"]
+position = Vector2( 432, 264 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cardC" type="Sprite" parent="Cards"]
+position = Vector2( 712, 264 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionSquare" type="Sprite" parent="."]
+position = Vector2( 712, 80 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="selectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="selectSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="cancelSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="FadeOut" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="Sprite" parent="FadeOut" index="0"]
+animation = "white"
+
+[editable path="FadeOut"]
