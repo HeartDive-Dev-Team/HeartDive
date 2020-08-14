@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Enemies/enemigoGusano1.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Objects/Enemies/flyer-enemy1.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Enemies/AnimatedSprite.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29, 9 )
+
+[node name="flyer-enemy1" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
+collision/safe_margin = 0.008
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="hurtBox" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0, 0.505882, 1, 1 )
+self_modulate = Color( 0, 0.109804, 1, 1 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = ExtResource( 1 )
+animation = "turn"
+frame = 12
+playing = true
+offset = Vector2( 0, 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="colLeft" type="RayCast2D" parent="."]
+position = Vector2( -29, 9 )
+enabled = true
+cast_to = Vector2( -1, 0 )
+collision_mask = 6
+
+[node name="colRight" type="RayCast2D" parent="."]
+position = Vector2( 29, 9 )
+enabled = true
+cast_to = Vector2( 1, 0 )
+collision_mask = 6
+
+[node name="colTop" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -50 )
+collision_mask = 6
+
+[node name="colBottom" type="RayCast2D" parent="."]
+enabled = true
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
