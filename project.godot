@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Project HeartDive (Alpha 0.9.9)"
+config/name="Project HeartDive (Alpha 1.0.0)"
 config/description="HeartDive's Alpha, currently showcasing gimmicks and the first parts of the story."
-run/main_scene="res://Rooms/menu01.tscn"
+run/main_scene="res://Rooms/cutsceneTest01.tscn"
 config/icon="res://Sprites/GameIcon.png"
 config/windows_native_icon="res://Sprites/GameIcon.ico"
 
