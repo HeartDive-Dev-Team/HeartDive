@@ -34,10 +34,10 @@ func _process(delta):
 			showMessage("Hacer este sistema de cutscenes me llevó una cantidad inhumana de esfuerzo");
 			_delay(0);
 		3:
-			player.velocity.x = player.WALKSPD;
+			player.velocity.x = 300;
 			_delay(60);
 		4:
-			player.reading = true;
+			player.reading = false;
 			_delay(2);
 		5:
 			pass;
