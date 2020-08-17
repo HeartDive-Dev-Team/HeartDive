@@ -11,7 +11,7 @@ extents = Vector2( 40, 16 )
 extents = Vector2( 29, 9 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 161.008, 109.511 )
+extents = Vector2( 156.973, 175.157 )
 
 [node name="flyer-chaser-enemy1" type="KinematicBody2D"]
 collision_layer = 2
@@ -25,6 +25,7 @@ input_pickable = false
 [node name="hurtBox" type="CollisionShape2D" parent="Area2D"]
 modulate = Color( 0, 0.505882, 1, 1 )
 self_modulate = Color( 0, 0.109804, 1, 1 )
+position = Vector2( 0, 5 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -67,12 +68,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="fieldOfView" type="Area2D" parent="."]
-position = Vector2( 47.375, -0.625 )
+[node name="Area2D2" type="Area2D" parent="."]
+light_mask = 15375
+collision_mask = 0
 
-[node name="campo" type="CollisionShape2D" parent="fieldOfView"]
-light_mask = 0
-position = Vector2( 152.877, 0.959412 )
+[node name="fieldOfView" type="CollisionShape2D" parent="Area2D2"]
+light_mask = 15375
 shape = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_Area2D2_body_exited"]
