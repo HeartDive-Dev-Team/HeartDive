@@ -317,7 +317,7 @@ func Dasheando():
 			velocity.y = -JUMP_SPEED;
 
 func _on_punchLhit_area_entered(area):
-	if "enemy" in area.get_parent().get_name():
+	if ("enemy" in area.get_parent().get_name() and "hurtBox" in area.get_name()):
 		if(position.x > area.get_parent().position.x):
 			area.get_parent().takeDamage(basicDMGdealer, -15);
 		else:
@@ -350,5 +350,5 @@ func setStun(stunAmount):
 
 
 func _on_gpHit_area_entered(area):
-	if "enemy" in area.get_parent().get_name():
+	if ("enemy" in area.get_parent().get_name() and "hurtBox" in area.get_name()):
 		area.get_parent().takeDamage(basicDMGdealer, 0);

@@ -109,7 +109,7 @@ func takeDamage(damageRecived, multiplier):
 	mode = "stun";
 	contadorStun = 30;
 	velocity.x = 10 * multiplier
-	velocity.y = -150;
+	velocity.y = -125;
 	if health <= 0:
 		die();
 
