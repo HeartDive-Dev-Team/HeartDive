@@ -257,6 +257,7 @@ func bolGround():
 func die():
 	position = startPos
 	gvar.G_playerHealth = gvar.G_MAXHealth;
+	get_tree().reload_current_scene();
 	
 func takeDamage (cantDamage):
 	if invencible == 0:

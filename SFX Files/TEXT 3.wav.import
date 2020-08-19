@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TEXT 3.wav-10040bc40b2fb79740c15ad304e99878.sample"
+
+[deps]
+
+source_file="res://SFX Files/TEXT 3.wav"
+dest_files=[ "res://.import/TEXT 3.wav-10040bc40b2fb79740c15ad304e99878.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
