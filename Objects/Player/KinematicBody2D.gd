@@ -36,7 +36,7 @@ var dashCooldown = 0;
 var pounding = true;
 var poundCount = 1;
 var gpPhase = 0;
-var gpPhase_1_time = 10;
+var gpPhase_1_time = 30;
 var gpPhase_1_timer = 0;
 var splashing = false;
 var splashTime = 5;
@@ -155,6 +155,7 @@ func _physics_process(delta):
 			if(Input.is_action_just_pressed("keyS")):
 				velocity.y = -JUMP_SPEED * 0.7;
 				velocity.x = -RUNSPD * get_wall_side();
+				$kickSFX.play();
 	
 	#DEBUG:
 	#Reset position
@@ -186,6 +187,8 @@ func _physics_process(delta):
 		elif(!pounding):
 			#Phase 1: Float in mid-air
 			if(gpPhase == 1):
+				if(!$gpSFX_1.playing):
+					$gpSFX_1.play();
 				velocity.y = 0;
 				velocity.x = 0;
 				if(gpPhase_1_timer > 0):
@@ -194,10 +197,16 @@ func _physics_process(delta):
 					gpPhase = 2;
 			#Phase 2: Drop to the floor
 			if(gpPhase == 2):
+				if(!$gpSFX_2.playing):
+					$gpSFX_2.play();
+				myAnims.groundPoundAnims(1);
 				invencible = invencibleMAX/4;
 				velocity.y = JUMP_SPEED * 2;
 				if(bolGround() or is_on_floor()):
 					velocity.y = -JUMP_SPEED * 0.5;
+					myAnims.defaultAnims();
+					if(!$gpSFX_3.playing):
+						$gpSFX_3.play();
 					if(intMove != 0):
 						velocity.x =  facingDirection * RUNSPD * 2.5;
 					poundCount -= 1;
@@ -299,6 +308,7 @@ func Dashear():
 		tieneControl = false;
 		dashTime = dashTimeMAX;
 		dashSide = intMove;
+		$dashSFX.play();
 
 func Dasheando():
 	if(dashTime > 1):
@@ -329,6 +339,7 @@ func groundPound():
 	gpPhase = 1;
 	gpPhase_1_timer = gpPhase_1_time;
 	get_node("AnimatedSprite/gpHit/gpGolpe").disabled = false;
+	myAnims.groundPoundAnims(0);
 	#if(velocity.x == 0):
 		#velocity.x = facingDirection * 100;
 

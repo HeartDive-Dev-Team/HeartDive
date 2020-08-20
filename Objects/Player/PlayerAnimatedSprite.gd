@@ -86,6 +86,17 @@ func punchAnims():
 	fall = "punchAir";
 	flippable = false;
 	frame = 0;
+func groundPoundAnims(value):
+	if(value == 0):
+		idle = "groundPound_1";
+		walk = "groundPound_1";
+		jump = "groundPound_1";
+		fall = "groundPound_1";
+	else:
+		idle = "fall";
+		walk = "fall";
+		jump = "fall";
+		fall = "fall";
 func dashAnims():
 	idle = "dash";
 	walk = "dash";

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sprites/Resource files/objPlayerSprites.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Objects/Player/playerWallCheck.gd" type="Script" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://Objects/Player/LEvida.gd" type="Script" id=6]
 [ext_resource path="res://Objects/Player/LEinvencible.gd" type="Script" id=7]
 [ext_resource path="res://SFX Files/HD SFX - Jump.wav" type="AudioStream" id=8]
+[ext_resource path="res://SFX Files/HD SFX - Ground pound_1.wav" type="AudioStream" id=9]
+[ext_resource path="res://SFX Files/HD SFX - Ground pound_2.wav" type="AudioStream" id=10]
+[ext_resource path="res://SFX Files/HD SFX - Ground pound_3.wav" type="AudioStream" id=11]
+[ext_resource path="res://SFX Files/HD SFX - Dash.wav" type="AudioStream" id=12]
+[ext_resource path="res://SFX Files/HD SFX - Kick.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.6453, 16 )
@@ -34,8 +39,8 @@ script = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
-animation = "punchL"
-frame = 6
+animation = "groundPound_1"
+frame = 15
 playing = true
 script = ExtResource( 4 )
 __meta__ = {
@@ -149,6 +154,24 @@ cast_to = Vector2( 0, 23 )
 
 [node name="jumpSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="gpSFX_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="gpSFX_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = 2.0
+
+[node name="gpSFX_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -2.0
+
+[node name="dashSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="kickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -5.0
 [connection signal="area_entered" from="AnimatedSprite/gpHit" to="." method="_on_gpHit_area_entered"]
 [connection signal="area_entered" from="AnimatedSprite/punchLhit" to="." method="_on_punchLhit_area_entered"]
 [connection signal="body_entered" from="wallCheck" to="." method="_on_wallCheck_body_entered"]

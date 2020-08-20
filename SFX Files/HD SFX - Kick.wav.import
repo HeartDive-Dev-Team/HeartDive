@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/HD SFX - Kick.wav-e8a43dba4ac9344586a4472e488d1d1c.sample"
+
+[deps]
+
+source_file="res://SFX Files/HD SFX - Kick.wav"
+dest_files=[ "res://.import/HD SFX - Kick.wav-e8a43dba4ac9344586a4472e488d1d1c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
