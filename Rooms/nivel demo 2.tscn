@@ -166,7 +166,7 @@ limit_bottom = 800
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="textBox" parent="CanvasLayer" instance=ExtResource( 6 )]
-position = Vector2( 816, -288 )
+position = Vector2( 1424, -832 )
 message = [ "Hola, soy un macrófago!", "Te encuentras... perdido?", "Si quieres podría ayudarte!" ]
 message_end = 2
 textName = "Macrofago"
@@ -201,7 +201,7 @@ collision_mask = 0
 tile_data = PoolIntArray( -1, 2, 196619, -65536, 2, 196619, -65535, 2, 131074, 65535, 2, 196619, 0, 2, 196619, 1, 2, 131074, 131071, 2, 196619, 65536, 2, 196619, 65537, 2, 131074, 196607, 2, 196619, 131072, 2, 196619, 131073, 2, 131074, 262143, 2, 196619, 196608, 2, 196619, 196609, 2, 131074 )
 
 [node name="macrofagoNPC" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1064, 120 )
+position = Vector2( 1672, -424 )
 scale = Vector2( -2, 2 )
 
 [editable path="obj_Player"]

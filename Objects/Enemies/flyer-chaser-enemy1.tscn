@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Objects/Enemies/enemigoGusano1.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Objects/Enemies/enemigoFlyer_chaser.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Objects/Enemies/flyer-chaser-enemy1.gd" type="Script" id=2]
 [ext_resource path="res://Objects/Enemies/AnimatedSprite.gd" type="Script" id=3]
 
@@ -31,8 +31,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
-animation = "turn"
-frame = 12
+frame = 1
 playing = true
 offset = Vector2( 0, 2 )
 script = ExtResource( 3 )

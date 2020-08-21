@@ -77,13 +77,15 @@ func punchAnims():
 	if(punch1_number == 1):
 		idle = "punchL";
 		walk = "punchL";
+		jump = "punchL";
+		fall = "punchL";
 		punch1_number = 2;
 	else:
 		idle = "punchR";
 		walk = "punchR";
+		jump = "punchR";
+		fall = "punchR";
 		punch1_number = 1;
-	jump = "punchAir";
-	fall = "punchAir";
 	flippable = false;
 	frame = 0;
 func groundPoundAnims(value):

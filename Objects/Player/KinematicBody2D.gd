@@ -167,7 +167,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("keyD"):
 			if(habilidadCooldown <= 0):
 				dar_golpe1(false); #Don't skip the usage check
-			elif(habilidadCooldown >= 6 and myAnims.punch1_number == 2):
+			elif(habilidadCooldown >= 1 and myAnims.punch1_number == 2):
 				dar_golpe1(true); #Skip it
 	
 		#Dashear//////////////////////////////////////////
@@ -292,12 +292,12 @@ func _on_wallCheck_body_exited(body):
 
 func dar_golpe1(skipCheck):
 	if(!isUsingAbility() or skipCheck == true):
-		if(bolGround()):
-			tieneControl = false
-			inicioGolpeL = true
-			habilidadCooldown = 25
-			velocity.x = RUNSPD * 1.1 * facingDirection;
-			get_node("AnimatedSprite").punchAnims();
+		#if(bolGround()):
+		tieneControl = false
+		inicioGolpeL = true
+		habilidadCooldown = 25
+		velocity.x = RUNSPD * 1.1 * facingDirection;
+		get_node("AnimatedSprite").punchAnims();
 
 func reiniciarInicioHabilidades():
 	inicioGolpeL = false
@@ -320,6 +320,7 @@ func Dasheando():
 	if((dashTime <= 1 or is_on_wall()) or Input.is_action_just_pressed("keyS")): #Go back to normal
 		tieneControl = true;
 		dashTime = 0;
+		intMove = dashSide;
 		get_node("AnimatedSprite").defaultAnims();
 		dashSide = 0;
 		dashAble = true;
