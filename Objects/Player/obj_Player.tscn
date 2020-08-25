@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Sprites/Resource files/objPlayerSprites.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Objects/Player/playerWallCheck.gd" type="Script" id=2]
@@ -13,15 +13,18 @@
 [ext_resource path="res://SFX Files/HD SFX - Ground pound_3.wav" type="AudioStream" id=11]
 [ext_resource path="res://SFX Files/HD SFX - Dash.wav" type="AudioStream" id=12]
 [ext_resource path="res://SFX Files/HD SFX - Kick.wav" type="AudioStream" id=13]
+[ext_resource path="res://SFX Files/HD SFX - Punch_3.wav" type="AudioStream" id=14]
+[ext_resource path="res://SFX Files/HD SFX - Punch_1.wav" type="AudioStream" id=15]
+[ext_resource path="res://SFX Files/HD SFX - Punch_2.wav" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14.6453, 16 )
+extents = Vector2( 24, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 26.0969, 6.80063 )
+extents = Vector2( 40, 6.80063 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 12 )
+extents = Vector2( 24, 24 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 6, 15 )
@@ -39,8 +42,8 @@ script = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
-animation = "groundPound_1"
-frame = 15
+animation = "fall"
+frame = 2
 playing = true
 script = ExtResource( 4 )
 __meta__ = {
@@ -66,7 +69,7 @@ disabled = true
 
 [node name="golpe" type="CollisionShape2D" parent="AnimatedSprite/punchLhit"]
 modulate = Color( 0.772549, 0.0862745, 0.0862745, 1 )
-position = Vector2( 8, 8 )
+position = Vector2( 8, 4 )
 shape = SubResource( 3 )
 disabled = true
 __meta__ = {
@@ -154,24 +157,42 @@ cast_to = Vector2( 0, 23 )
 
 [node name="jumpSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "SFX"
 
 [node name="gpSFX_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "SFX"
 
 [node name="gpSFX_2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = 2.0
+bus = "SFX"
 
 [node name="gpSFX_3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -2.0
+bus = "SFX"
 
 [node name="dashSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+bus = "SFX"
 
 [node name="kickSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -5.0
+bus = "SFX"
+
+[node name="punchSFX_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+bus = "SFX"
+
+[node name="punchSFX_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+bus = "SFX"
+
+[node name="punchSFX_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+bus = "SFX"
 [connection signal="area_entered" from="AnimatedSprite/gpHit" to="." method="_on_gpHit_area_entered"]
 [connection signal="area_entered" from="AnimatedSprite/punchLhit" to="." method="_on_punchLhit_area_entered"]
 [connection signal="body_entered" from="wallCheck" to="." method="_on_wallCheck_body_entered"]

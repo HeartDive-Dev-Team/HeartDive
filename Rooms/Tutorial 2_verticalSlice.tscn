@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/tileset-1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/obj_Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Objects/Enemies/flyer-chaser-enemy1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/Enemies/flyer-enemy1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/portalSalida.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/FadeOut.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 
@@ -60,18 +61,21 @@ position = Vector2( 240, 912 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="FadeIn" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
+z_index = 10
+
 [node name="Background" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="FadeOut" parent="CanvasLayer" instance=ExtResource( 11 )]
+visible = false
+speed = -16
 
 [node name="BGOs" parent="." instance=ExtResource( 6 )]
 position = Vector2( 128, 256 )
 
 [node name="TileMap" parent="BGOs" index="0"]
 tile_data = PoolIntArray( -327650, 2, 0, 1048586, 2, 0, 1048595, 1, 0, 1048605, 5, 0, 1114141, 5, 0, 1179649, 0, 0, 1179677, 5, 0, 1245213, 5, 0, 1507332, 3, 0, 1507340, 5, 0, 1507344, 1, 0, 1507346, 5, 0, 1507358, 3, 0, 1572876, 5, 0, 1572882, 5, 0, 1638412, 5, 0, 1638418, 5, 0, 1703948, 5, 0, 1703954, 5, 0, 1769484, 5, 0, 1769490, 5, 0, 1835019, 2, 0, 1835020, 5, 0, 1835026, 5, 0, 1900556, 5, 0, 2031615, 0, 0, 1966092, 5, 0, 2031628, 5, 0, 2031639, 2, 0, 2228226, 1, 0, 2490365, 5, 0, 2555901, 5, 0, 2621437, 5, 0 )
-
-[node name="FadeIn" parent="." instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 384, 0 )
-z_index = 10
 
 [node name="flyer-enemy2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 736, 1144 )
@@ -86,6 +90,7 @@ position = Vector2( 1144, 1016 )
 position = Vector2( -56, 1488 )
 scale = Vector2( 1, 4 )
 roomGoto = "res://Rooms/nivel demo final.tscn"
+fadeOut = NodePath("../CanvasLayer/FadeOut")
 
 [editable path="obj_Player"]
 

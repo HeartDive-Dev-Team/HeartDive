@@ -205,8 +205,7 @@ func _physics_process(delta):
 				if(bolGround() or is_on_floor()):
 					velocity.y = -JUMP_SPEED * 0.5;
 					myAnims.defaultAnims();
-					if(!$gpSFX_3.playing):
-						$gpSFX_3.play();
+					$gpSFX_3.play();
 					if(intMove != 0):
 						velocity.x =  facingDirection * RUNSPD * 2.5;
 					poundCount -= 1;
@@ -297,6 +296,7 @@ func dar_golpe1(skipCheck):
 		inicioGolpeL = true
 		habilidadCooldown = 25
 		velocity.x = RUNSPD * 1.1 * facingDirection;
+		$punchSFX_3.play();
 		get_node("AnimatedSprite").punchAnims();
 
 func reiniciarInicioHabilidades():
@@ -334,6 +334,11 @@ func _on_punchLhit_area_entered(area):
 			area.get_parent().takeDamage(basicDMGdealer, -15);
 		else:
 			area.get_parent().takeDamage(basicDMGdealer, 15);
+		var rand = rand_range(0, 10);
+		if(rand < 5):
+			$punchSFX_2.play();
+		else:
+			$punchSFX_1.play();
 
 func groundPound():
 	pounding = false;
@@ -341,6 +346,8 @@ func groundPound():
 	gpPhase_1_timer = gpPhase_1_time;
 	get_node("AnimatedSprite/gpHit/gpGolpe").disabled = false;
 	myAnims.groundPoundAnims(0);
+	$gpSFX_1.playing = false;
+	$gpSFX_2.playing = false;
 	#if(velocity.x == 0):
 		#velocity.x = facingDirection * 100;
 
@@ -365,3 +372,4 @@ func setStun(stunAmount):
 func _on_gpHit_area_entered(area):
 	if ("enemy" in area.get_parent().get_name() and "hurtBox" in area.get_name()):
 		area.get_parent().takeDamage(basicDMGdealer, 0);
+		$punchSFX_2.play();
