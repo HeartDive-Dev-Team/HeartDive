@@ -14,16 +14,25 @@ export var voices = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player.reading = true;
-	player.visible = false;
-	player.get_node("Camera2D").position.x += 432;
-	spawnBalls.visible = false;
-	#Portrait default
-	changeVoice(voices[0]);
-	changePortrait(portraits[0]);
-	changeName("Macrófago");
-	changeAnimation("default");
-	gvar.HUD_OFF();
+	if(gvar.G_targetSpawn != 1):
+		player.reading = true;
+		player.visible = false;
+		player.get_node("Camera2D").position.x += 432;
+		get_node("CanvasLayer/FadeIn2").visible = false;
+		spawnBalls.visible = false;
+		#Portrait default
+		changeVoice(voices[0]);
+		changePortrait(portraits[0]);
+		changeName("Macrófago");
+		changeAnimation("default");
+		gvar.HUD_OFF();
+	else:
+		scenePhase = 13;
+		player.visible = true;
+		playerActor.visible = false;
+		spawnBalls.visible = false;
+		get_node("CanvasLayer/FadeIn2").active = true;
+		get_node("CanvasLayer/FadeIn").visible = false;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

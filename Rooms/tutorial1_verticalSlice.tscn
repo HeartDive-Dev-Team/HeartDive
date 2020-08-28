@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/tileset-1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/spikes.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Backgrounds/BGOsTemplate.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/Enemies/flyer-enemy1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/FadeOut-Classic.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/Player/spawnPoint.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 
@@ -191,6 +192,13 @@ scale = Vector2( 3, 1 )
 roomGoto = "res://Rooms/Tutorial 2_verticalSlice.tscn"
 fadeOut = NodePath("../CanvasLayer/FadeOut")
 
+[node name="portalSalida2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -72, -76 )
+scale = Vector2( 1, 6 )
+roomGoto = "res://Rooms/nivel demo 3.tscn"
+fadeOut = NodePath("../CanvasLayer/FadeOut")
+targetSpawn = 1
+
 [node name="BGOs" parent="." instance=ExtResource( 8 )]
 position = Vector2( -32, -224 )
 
@@ -199,6 +207,14 @@ tile_data = PoolIntArray( 65545, 5, 0, 65551, 5, 0, 65554, 5, 0, 65558, 1, 0, 65
 
 [node name="flyer-enemy1" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1152, 568 )
+
+[node name="spawnPoint" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1128, 664 )
+myID = 1
+flipChar = true
+
+[node name="spawnPoint2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 0, -40 )
 
 [editable path="obj_Player"]
 

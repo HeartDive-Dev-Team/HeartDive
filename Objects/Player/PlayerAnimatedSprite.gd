@@ -18,7 +18,7 @@ func _ready():
 
 func _process(delta):
 	if objPlayer.inicioGolpeL:
-		if (frame >= 1 and frame < 3):
+		if (frame >= 1 and frame < 5):
 			get_node("punchLhit/golpe").disabled = false
 		else:
 			get_node("punchLhit/golpe").disabled = true
@@ -86,6 +86,14 @@ func punchAnims():
 		jump = "punchR";
 		fall = "punchR";
 		punch1_number = 1;
+	flippable = false;
+	frame = 0;
+func airPunchAnims(side):
+	if(side == 0):
+		idle = "punchAir";
+		walk = "punchAir";
+		jump = "punchAir";
+		fall = "punchAir";
 	flippable = false;
 	frame = 0;
 func groundPoundAnims(value):

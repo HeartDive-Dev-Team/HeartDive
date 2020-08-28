@@ -7,6 +7,7 @@ export(NodePath) var fadeOut;
 var myFadeOut;
 var countdown = 60;
 var active = false;
+export var targetSpawn = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,3 +26,4 @@ func _on_Area2D_body_entered(body):
 		active = true;
 		myFadeOut.activate();
 		body.reading = true;
+		gvar.G_targetSpawn = targetSpawn;

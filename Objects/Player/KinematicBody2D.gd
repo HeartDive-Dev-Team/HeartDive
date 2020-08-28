@@ -33,6 +33,9 @@ var dashAble = true;
 var dashCooldownMAX = 90;
 var dashCooldown = 0;
 
+var inicioGolpeL = false
+var isAirPunch = false;
+
 var pounding = true;
 var poundCount = 1;
 var gpPhase = 0;
@@ -48,7 +51,6 @@ var intMove = 0;
 
 var invencible = 0;
 var invencibleMAX = 120;
-var inicioGolpeL = false
 var stun = 0;
 
 onready var jumpSFX = get_node("jumpSFX");
@@ -233,10 +235,13 @@ func _process(delta):
 			velocity.x += -WALK_SPEED * 0.7 * delta * 60
 		else:
 			velocity.x += WALK_SPEED * 0.7 * delta * 60
-		#if(velocity.x > WALKSPD/2):
-			#velocity.x = WALKSPD/2;
-		#if(velocity.x < -WALKSPD/2):
-			#velocity.x = -WALKSPD/2;
+	if(inicioGolpeL and isAirPunch):
+		if(bolGround()):
+			habilidadCooldown = 0; #Si tocas el piso al hacer un air, se cancela
+		get_node("AnimatedSprite/punchLhit/golpe").position.x = 0;
+		get_node("AnimatedSprite/punchLhit/golpe").scale.y = 1.3;
+		get_node("AnimatedSprite/punchLhit/golpe").scale.x = 1.3;
+	#Countdown
 	if (habilidadCooldown > 0):
 		habilidadCooldown -= 1
 	elif(habilidadCooldown == 0):
@@ -245,10 +250,12 @@ func _process(delta):
 		habilidadCooldown = -1;
 		myAnims.punch1_number = 1;
 		velocity.x = 0;
+		get_node("AnimatedSprite/punchLhit/golpe").scale.y = 1;
+		get_node("AnimatedSprite/punchLhit/golpe").scale.x = 1;
 	if (intMove == 1 and habilidadCooldown <= 0):
-		get_node("AnimatedSprite/punchLhit/golpe").position.x = 8
+		get_node("AnimatedSprite/punchLhit/golpe").position.x = 4
 	elif (intMove == -1 and habilidadCooldown <= 0):
-		get_node("AnimatedSprite/punchLhit/golpe").position.x = -8
+		get_node("AnimatedSprite/punchLhit/golpe").position.x = -4
 
 func get_wall_side():
 	if(get_node("colRight").is_colliding()):
@@ -295,9 +302,14 @@ func dar_golpe1(skipCheck):
 		tieneControl = false
 		inicioGolpeL = true
 		habilidadCooldown = 25
-		velocity.x = RUNSPD * 1.1 * facingDirection;
+		if(bolGround()):
+			velocity.x = RUNSPD * 1.1 * facingDirection;
+			get_node("AnimatedSprite").punchAnims();
+			isAirPunch = false;
+		else:
+			get_node("AnimatedSprite").airPunchAnims(0);
+			isAirPunch = true;
 		$punchSFX_3.play();
-		get_node("AnimatedSprite").punchAnims();
 
 func reiniciarInicioHabilidades():
 	inicioGolpeL = false

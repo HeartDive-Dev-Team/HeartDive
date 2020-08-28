@@ -59,7 +59,7 @@ func _process(delta):
 				0:
 					roomGoto = "res://Rooms/menu03.tscn";
 				1:
-					roomGoto = "res://Rooms/menu03.tscn";
+					roomGoto = "res://Rooms/menu04.tscn";
 				2:
 					roomGoto = "res://Rooms/menu03.tscn";
 				3:

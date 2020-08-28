@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Backgrounds/BG_Black.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/TEACPSSB.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/TEACPSS.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Rooms/menu04.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/selectionArrow.png" type="Texture" id=5]
+[ext_resource path="res://SFX Files/HD SFX - Start.wav" type="AudioStream" id=6]
+[ext_resource path="res://SFX Files/HD SFX - Select.wav" type="AudioStream" id=7]
+[ext_resource path="res://Objects/FadeOut-Classic.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SFX Files/HD SFX - Cancel.wav" type="AudioStream" id=9]
+[ext_resource path="res://Objects/FadeIn-Classic.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SFX Files/HD SFX - Blip.wav" type="AudioStream" id=11]
 
 [node name="menu04" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="BG" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 0 )
@@ -25,19 +34,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="topText3" type="Label" parent="Texts"]
-margin_left = 24.0
-margin_top = 72.0
-margin_right = 320.0
-margin_bottom = 384.0
+[node name="optionsText" type="Label" parent="Texts"]
+margin_left = 56.0
+margin_top = 74.0
+margin_right = 374.0
+margin_bottom = 441.0
 custom_fonts/font = ExtResource( 2 )
-text = "Screen Resolution"
+text = "Screen Resolution
+
+Music Volume
+
+SFX Volume
+
+Sound Test
+
+Keyboard Options"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="topText2" type="Label" parent="Texts"]
+[node name="bottomText" type="Label" parent="Texts"]
 margin_left = 296.0
 margin_top = 446.0
 margin_right = 576.0
@@ -50,3 +67,70 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Information" type="Node2D" parent="Texts"]
+
+[node name="Music" type="Node2D" parent="Texts/Information"]
+
+[node name="lbl_musicVol" type="Label" parent="Texts/Information/Music"]
+margin_left = 728.0
+margin_top = 144.0
+margin_right = 830.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 2 )
+text = "musicVol"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_SFXVol" type="Label" parent="Texts/Information"]
+margin_left = 752.0
+margin_top = 224.0
+margin_right = 830.0
+margin_bottom = 258.0
+custom_fonts/font = ExtResource( 2 )
+text = "SFXVol"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_Screen" type="Label" parent="Texts/Information"]
+margin_left = 712.0
+margin_top = 80.0
+margin_right = 830.0
+margin_bottom = 114.0
+custom_fonts/font = ExtResource( 2 )
+text = "Windowed"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="selectionArrow" type="Sprite" parent="."]
+position = Vector2( 24, 88 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, 1 )
+
+[node name="selectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "SFX"
+
+[node name="cancelSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="selectSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="selectSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+bus = "SFX"
+
+[node name="FadeOut" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="FadeIn-Classic" parent="." instance=ExtResource( 10 )]
+visible = false
