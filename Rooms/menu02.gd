@@ -43,7 +43,7 @@ func _process(delta):
 				get_node("description").text = "Main Story of the game";
 			1:
 				square.changeIndex(144);
-				get_node("description").text = "General configuration of the game and Sound Test";
+				get_node("description").text = "General configuration of the game and Sound Test (Not available yet)";
 			2:
 				square.changeIndex(208);
 				get_node("description").text = "Extra content not featured in the Main Plot (Not available yet)";
@@ -52,8 +52,6 @@ func _process(delta):
 				get_node("description").text = "Return to the Title Screen";
 	#Selection
 	if(Input.is_action_just_pressed("ui_accept") and active):
-			FadeOut.activate();
-			active = false;
 			#Select the room to go depending on the menu index	
 			match indexMenu:
 				0:
@@ -64,5 +62,10 @@ func _process(delta):
 					roomGoto = "res://Rooms/menu03.tscn";
 				3:
 					roomGoto = "res://Rooms/menu01.tscn";
-			get_node("selectSFX2").play();
-			RoomChanger.activate(roomGoto, 60);
+			if(indexMenu != 2 and indexMenu != 1):
+				get_node("selectSFX2").play();
+				RoomChanger.activate(roomGoto, 60);
+				FadeOut.activate();
+				active = false;
+			else:
+				get_node("errorSFX").play();

@@ -18,6 +18,7 @@ var coyote = 0;
 var coyoteMAX = 20;
 var jumped = false;
 var bolDobleSalto = true;
+onready var jumpBuffer = get_node("jumpBuffer");
 
 var WJUMPonwall = false;
 
@@ -104,11 +105,18 @@ func _physics_process(delta):
 		
 	#Basic Jumping //////////////////////////////////////////
 	if(reading == false):
-		if Input.is_action_pressed("keyS") and (is_on_floor() or coyote > 0) and !jumped:
+		if Input.is_action_just_pressed("keyS") and (is_on_floor() or coyote > 0) and !jumped:
 			jump(JUMP_SPEED);
 			jumped = true;
 			if(coyote > 0):
 				coyote = 1;
+		elif(!is_on_floor() or !bolGround()):
+			jumpBuffer.start();
+		if(Input.is_action_pressed("keyS") and (is_on_floor() or bolGround()) and !jumped and !jumpBuffer.is_stopped()):
+			jump(JUMP_SPEED);
+			jumpBuffer.stop();
+			jumped = true;
+		
 		if(Input.is_action_just_released("keyS") and velocity.y < 0):
 			velocity.y = velocity.y / 2;
 		if Input.is_action_just_pressed("keyS") and !bolGround() and bolDobleSalto and get_wall_side() == 0 and coyote <= 0:
@@ -120,7 +128,7 @@ func _physics_process(delta):
 			velocity.x += -WALK_SPEED * delta * 60
 		elif (intMove == 1 and velocity.x < MAX_SPEED):
 			velocity.x +=  WALK_SPEED * delta * 60
-		elif(bolGround() or is_on_floor()):
+		elif((bolGround() or is_on_floor()) or (!bolGround() and intMove == 0)):
 			velocity.x -= WALK_SPEED * sign(velocity.x) * delta * 60;
 	else:
 		if(!bolGround()):
@@ -184,7 +192,7 @@ func _physics_process(delta):
 			if(get_node("AnimatedSprite/gpHit/gpSplash").disabled == false):
 				get_node("AnimatedSprite/gpHit/gpSplash").disabled = true;
 				get_node("AnimatedSprite/gpHit/gpGolpe").disabled = true;
-		if(Input.is_action_just_pressed("keyA") and pounding and !isUsingAbility() and poundCount > 0 and !bolGround()):
+		if(Input.is_action_pressed("keyA") and Input.is_action_pressed("ui_down") and pounding and !isUsingAbility() and poundCount > 0 and !bolGround()):
 			groundPound();
 		elif(!pounding):
 			#Phase 1: Float in mid-air

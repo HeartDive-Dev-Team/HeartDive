@@ -28,6 +28,12 @@ var G_targetSpawn = -1; #The target spawnpoint, used between every single room t
 # 0 or more = spawnpoint ID
 var G_checkpointRoom = ""; #The room where the checkpoint is
 
+###########################
+#    In-Game Variables    #------------------------------
+###########################
+#Variables that are only set to hide stuff on a demo build
+var G_hideCutscene1 = true;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

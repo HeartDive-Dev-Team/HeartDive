@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fonts/uni05_53.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Objects/CutsceneSystem-textBox.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Sprites/spr_caja_txt_2.png" type="Texture" id=5]
 [ext_resource path="res://SFX Files/textOlimac.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sprites/textboxNEW.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/spr_ZIcon2_0.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,6 +21,19 @@ animations = [ {
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+} ]
 
 [node name="CutsceneSystem-TextHandler" type="Node2D"]
 
@@ -75,5 +89,10 @@ stream = ExtResource( 6 )
 position = Vector2( -128, 44 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 4 )
-frame = 1
 playing = true
+
+[node name="pressKey" type="AnimatedSprite" parent="CanvasLayer/textBox"]
+position = Vector2( 600, 72 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 3 )
+animation = "on"

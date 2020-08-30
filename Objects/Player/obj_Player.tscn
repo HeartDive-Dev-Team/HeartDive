@@ -39,11 +39,14 @@ position = Vector2( 176, 176 )
 z_index = 10
 script = ExtResource( 5 )
 
+[node name="jumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
-animation = "punchAir"
-frame = 7
+animation = "jump"
 playing = true
 script = ExtResource( 4 )
 __meta__ = {

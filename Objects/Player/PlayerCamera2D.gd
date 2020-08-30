@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(!objPlayer.reading and objPlayer.velocity.x == 0):
+	if(!objPlayer.reading and objPlayer.velocity.x == 0 and objPlayer.bolGround()):
 		if(Input.is_action_pressed("ui_up")):
 			smoothing_speed = 1;
 			position.y = rootPos.y - camMoveY;

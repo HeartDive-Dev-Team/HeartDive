@@ -26,13 +26,13 @@ func _process(delta):
 			player.reading = true;
 			_delay(100);
 		1:
-			showMessage("Bueno, esto es el final de la Demo de hoy");
+			showMessage("Well, this is as far as this demo goes.");
 			_delay(0);
 		2:
-			showMessage("Espero que les haya gustado!");
+			showMessage("However, you are free to go into the Debug Room if you want to :D");
 			_delay(0);
 		3:
-			showMessage("Nos vemos en la próxima Demo!");
+			showMessage("See you around!");
 			_delay(0);
 		4:
 			player.reading = false;

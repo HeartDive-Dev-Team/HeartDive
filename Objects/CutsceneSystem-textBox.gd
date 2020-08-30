@@ -47,6 +47,7 @@ func _process(delta):
 			characters += 1 + hold;
 			textFace.playing = true;
 			target.set_bbcode(message.substr(0, characters));
+			$pressKey.animation = "off";
 			
 			print(audioPlayer.playing)
 			#Check to see if you can play the speech sound
@@ -56,6 +57,7 @@ func _process(delta):
 		elif(characters >= message.length()): #No more messages
 			textFace.playing = false;
 			textFace.frame = 0;
+			$pressKey.animation = "on";
 			if(Input.is_action_just_pressed("keyZ")):
 				finished = true;
 				characters = 0;

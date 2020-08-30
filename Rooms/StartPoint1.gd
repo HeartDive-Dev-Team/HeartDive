@@ -14,7 +14,7 @@ export var voices = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(gvar.G_targetSpawn != 1):
+	if(gvar.G_targetSpawn != 1 and !gvar.G_hideCutscene1):
 		player.reading = true;
 		player.visible = false;
 		player.get_node("Camera2D").position.x += 432;
@@ -29,6 +29,7 @@ func _ready():
 	else:
 		scenePhase = 13;
 		player.visible = true;
+		player.reading = true;
 		playerActor.visible = false;
 		spawnBalls.visible = false;
 		get_node("CanvasLayer/FadeIn2").active = true;
@@ -105,4 +106,25 @@ func _process(delta):
 		12:
 			player.reading = false;
 			player.get_node("Camera2D").position = Vector2(0, 0);
+			gvar.HUD_ON();
+		13:
+			if(gvar.G_targetSpawn != 1):
+				changeVoice(voices[1]);
+				changeName("Notice");
+				showMessage("The cutscene has been ommited on this build to avoid spoilers.")
+			_delay(0);
+		14:
+			if(gvar.G_targetSpawn != 1):
+				showMessage("Also, this build is meant purely for testing controls and some other stuff.")
+			_delay(0);
+		15:
+			if(gvar.G_targetSpawn != 1):
+				showMessage("Oh, and there's a lot of stuff that's subject to changes, which means feedback can help us a lot :D")
+			_delay(0);
+		16:
+			if(gvar.G_targetSpawn != 1):
+				showMessage("Anyways, have fun playing around!")
+			_delay(0);
+		17:
+			player.reading = false;
 			gvar.HUD_ON();

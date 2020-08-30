@@ -116,11 +116,11 @@ position = Vector2( 464, 592 )
 [node name="obj_Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 960, 400 )
 
-[node name="AnimatedSprite" parent="obj_Player" index="0"]
+[node name="AnimatedSprite" parent="obj_Player" index="1"]
 animation = "idle"
-frame = 2
+frame = 4
 
-[node name="Camera2D" parent="obj_Player" index="2"]
+[node name="Camera2D" parent="obj_Player" index="3"]
 limit_left = -576
 limit_top = -32
 limit_right = 1024

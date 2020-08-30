@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Objects/Player/obj_Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/tileset-1.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://SFX Files/HD SFX - Macrofago soundbyte.wav" type="AudioStream" id=15]
 [ext_resource path="res://Objects/FadeOut.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Objects/Player/spawnPoint.tscn" type="PackedScene" id=17]
+[ext_resource path="res://SFX Files/TEXT 3.wav" type="AudioStream" id=18]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
@@ -72,51 +73,51 @@ region = Rect2( 120, 108, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 216, 30, 36 )
+region = Rect2( 150, 108, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
-region = Rect2( 30, 216, 30, 36 )
+region = Rect2( 180, 108, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 9 )
-region = Rect2( 60, 216, 30, 36 )
+region = Rect2( 210, 108, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 9 )
-region = Rect2( 90, 216, 30, 36 )
+region = Rect2( 0, 144, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 9 )
-region = Rect2( 120, 216, 30, 36 )
+region = Rect2( 0, 216, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 9 )
-region = Rect2( 150, 216, 30, 36 )
+region = Rect2( 30, 216, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 9 )
-region = Rect2( 180, 216, 30, 36 )
+region = Rect2( 60, 216, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 9 )
-region = Rect2( 210, 216, 30, 36 )
+region = Rect2( 90, 216, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 9 )
-region = Rect2( 150, 108, 30, 36 )
+region = Rect2( 120, 216, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 9 )
-region = Rect2( 180, 108, 30, 36 )
+region = Rect2( 150, 216, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 9 )
-region = Rect2( 210, 108, 30, 36 )
+region = Rect2( 180, 216, 30, 36 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 144, 30, 36 )
+region = Rect2( 210, 216, 30, 36 )
 
 [sub_resource type="SpriteFrames" id=26]
 animations = [ {
@@ -135,15 +136,15 @@ animations = [ {
 "name": "player_3",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
-"loop": false,
-"name": "player_0",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": false,
 "name": "player_2",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "player_0",
+"speed": 15.0
 } ]
 
 [node name="Node2D" type="Node2D"]
@@ -152,7 +153,7 @@ textWriter = NodePath("CutsceneSystem-TextHandler")
 roomSong = ExtResource( 10 )
 roomSong2 = ExtResource( 12 )
 portraits = [ ExtResource( 14 ) ]
-voices = [ ExtResource( 15 ) ]
+voices = [ ExtResource( 15 ), ExtResource( 18 ) ]
 
 [node name="spawnBalls" type="Node2D" parent="."]
 position = Vector2( 256, 320 )
@@ -217,7 +218,10 @@ playing = true
 visible = false
 position = Vector2( 256, 304 )
 
-[node name="Camera2D" parent="obj_Player" index="2"]
+[node name="AnimatedSprite" parent="obj_Player" index="1"]
+frame = 1
+
+[node name="Camera2D" parent="obj_Player" index="3"]
 limit_left = 0
 limit_top = -416
 limit_right = 2432

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Rooms/SelectSquare.gd" type="Script" id=1]
 [ext_resource path="res://Objects/TileMapTransiciones.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Rooms/Menu scripts/menu2_bgMove.gd" type="Script" id=15]
 [ext_resource path="res://Rooms/Menu scripts/menu2_menuMove.gd" type="Script" id=16]
 [ext_resource path="res://Sprites/bocetos y animaciones.png" type="Texture" id=17]
+[ext_resource path="res://SFX Files/HD SFX - Error.wav" type="AudioStream" id=18]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 6 )
@@ -107,7 +108,7 @@ script = ExtResource( 16 )
 anchor_bottom = 0.123
 margin_left = 56.0
 margin_top = 56.0
-margin_right = 312.0
+margin_right = 341.0
 margin_bottom = 480.0
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
@@ -151,6 +152,11 @@ bus = "SFX"
 stream = ExtResource( 13 )
 bus = "SFX"
 
+[node name="errorSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -1.0
+bus = "SFX"
+
 [node name="description" type="Label" parent="."]
 margin_left = 32.0
 margin_top = 336.0
@@ -191,7 +197,7 @@ tile_data = PoolIntArray( 65562, 4, 0, 131098, 5, 0, 196634, 6, 0, 262163, 0, 0,
 position = Vector2( 520, 288 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 11 )
-frame = 4
+frame = 3
 playing = true
 
 [editable path="FadeIn-Classic"]
