@@ -4,12 +4,12 @@ var health = 150;
 var objetoColisionado;
 var colisionando = false;
 onready var anims = get_node("AnimatedSprite");
-var enemy1 = preload ("res://Objects/Enemies/enemy1.tscn");
-
+export var enemyToImport:String
+#onready var enemy1;
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generateEnemy()
-
+	#enemy1 = preload(enemyToImport);
+	pass
 func _process(delta):
 	pass
 
@@ -20,7 +20,6 @@ func takeDamage(damageRecived, multiplier):
 	health = health-damageRecived
 	if health <= 0:
 		die();
-		
 
 func generateEnemy():
 	var e = enemy1.instance()
