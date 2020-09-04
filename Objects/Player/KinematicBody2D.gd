@@ -279,6 +279,8 @@ func bolGround():
 
 func die():
 	position = startPos
+	# ir a escena transición con cartel luminoso de moriste jaja que wacho
+	# position = tablaCheckpoints[idCheckpoint].position
 	gvar.G_playerHealth = gvar.G_MAXHealth;
 	get_tree().reload_current_scene();
 	

@@ -14,6 +14,8 @@ var contadorStun = 0;
 var contadorInvencible = 0
 onready var anims = get_node("AnimatedSprite");
 
+var spawnerGenerated = false;
+
 var player
 
 var turning = false;
