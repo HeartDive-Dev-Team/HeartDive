@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Rooms/SelectSquare.gd" type="Script" id=1]
 [ext_resource path="res://Objects/TileMapTransiciones.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Rooms/menu02.gd" type="Script" id=4]
 [ext_resource path="res://Objects/FadeIn-Classic.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/SelectionSquares.png" type="Texture" id=6]
-[ext_resource path="res://Music/HD OST - Menu.ogg" type="AudioStream" id=7]
 [ext_resource path="res://SFX Files/HD SFX - Select.wav" type="AudioStream" id=8]
 [ext_resource path="res://Fonts/TEACPSS.tres" type="DynamicFont" id=9]
 [ext_resource path="res://Objects/FadeOut-Classic.tscn" type="PackedScene" id=10]
@@ -83,7 +82,6 @@ animations = [ {
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
-roomSong = ExtResource( 7 )
 
 [node name="CameraNode" type="Node2D" parent="."]
 
@@ -197,7 +195,7 @@ tile_data = PoolIntArray( 65562, 4, 0, 131098, 5, 0, 196634, 6, 0, 262163, 0, 0,
 position = Vector2( 520, 288 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 11 )
-frame = 3
+frame = 5
 playing = true
 
 [editable path="FadeIn-Classic"]

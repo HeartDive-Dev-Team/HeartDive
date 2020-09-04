@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objects/tileset-1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/spikes.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Backgrounds/BGOsTemplate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Sprites/macrofago_textface.png" type="Texture" id=11]
 [ext_resource path="res://Rooms/nivel demo 2.gd" type="Script" id=12]
-[ext_resource path="res://Music/AB OST - Welcome.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Objects/Player/spawnPoint.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Objects/FadeOut.tscn" type="PackedScene" id=15]
 
@@ -39,7 +38,7 @@ animations = [ {
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 12 )
-songToPlay = ExtResource( 13 )
+songToPlay = 1
 
 [node name="portalSalida" parent="." instance=ExtResource( 4 )]
 position = Vector2( 752, 560 )
@@ -167,7 +166,7 @@ position = Vector2( 208, 368 )
 [node name="obj_Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 129, 288 )
 
-[node name="Camera2D" parent="obj_Player" index="2"]
+[node name="Camera2D" parent="obj_Player" index="3"]
 limit_left = 0
 limit_top = -128
 limit_right = 1632

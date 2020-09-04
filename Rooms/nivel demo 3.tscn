@@ -118,7 +118,7 @@ position = Vector2( 960, 400 )
 
 [node name="AnimatedSprite" parent="obj_Player" index="1"]
 animation = "idle"
-frame = 4
+frame = 5
 
 [node name="Camera2D" parent="obj_Player" index="3"]
 limit_left = -576

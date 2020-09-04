@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/HD OST - macrofago 2.ogg-800912718aefd447308659fe5f7c89f9.oggstr"
+
+[deps]
+
+source_file="res://Music/HD OST - macrofago 2.ogg"
+dest_files=[ "res://.import/HD OST - macrofago 2.ogg-800912718aefd447308659fe5f7c89f9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

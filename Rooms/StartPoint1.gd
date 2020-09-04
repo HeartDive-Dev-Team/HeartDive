@@ -4,8 +4,8 @@ extends "res://Objects/CutsceneSystem.gd"
 # Declare member variables here. Examples:
 onready var player = get_node("obj_Player");
 onready var playerActor = get_node("playerNPC");
-export(AudioStream) var roomSong;
-export(AudioStream) var roomSong2;
+export var roomSong = 0;
+export var roomSong2 = 0;
 onready var spawnBalls = get_node("spawnBalls");
 onready var text = get_node("CutsceneSystem-TextHandler/CanvasLayer/textBox");
 export var portraits = [];
@@ -14,7 +14,7 @@ export var voices = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(gvar.G_targetSpawn != 1 and !gvar.G_hideCutscene1):
+	if(gvar.G_targetSpawn != 1):
 		player.reading = true;
 		player.visible = false;
 		player.get_node("Camera2D").position.x += 432;
@@ -81,7 +81,6 @@ func _process(delta):
 			playerActor.playing = false;
 			_delay(240);
 		6:
-			roomSong2.loop = false;
 			MusicPlayer.changeSong(roomSong2);
 			playerActor.playing = true;
 			_delay(90);
@@ -108,23 +107,5 @@ func _process(delta):
 			player.get_node("Camera2D").position = Vector2(0, 0);
 			gvar.HUD_ON();
 		13:
-			if(gvar.G_targetSpawn != 1):
-				changeVoice(voices[1]);
-				changeName("Notice");
-				showMessage("The cutscene has been ommited on this build to avoid spoilers.")
-			_delay(0);
-		14:
-			if(gvar.G_targetSpawn != 1):
-				showMessage("Also, this build is meant purely for testing controls and some other stuff.")
-			_delay(0);
-		15:
-			if(gvar.G_targetSpawn != 1):
-				showMessage("Oh, and there's a lot of stuff that's subject to changes, which means feedback can help us a lot :D")
-			_delay(0);
-		16:
-			if(gvar.G_targetSpawn != 1):
-				showMessage("Anyways, have fun playing around!")
-			_delay(0);
-		17:
 			player.reading = false;
 			gvar.HUD_ON();

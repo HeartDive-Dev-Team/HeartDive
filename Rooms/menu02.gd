@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var active = true;
-export(AudioStream) var roomSong;
+export var roomSong = 0;
 var indexMenu = 0;
 onready var square = get_node("SelectSquare");
 onready var FadeOut = get_node("FadeOut");
@@ -62,7 +62,7 @@ func _process(delta):
 					roomGoto = "res://Rooms/menu03.tscn";
 				3:
 					roomGoto = "res://Rooms/menu01.tscn";
-			if(indexMenu != 2 and indexMenu != 1):
+			if(indexMenu != 2):
 				get_node("selectSFX2").play();
 				RoomChanger.activate(roomGoto, 60);
 				FadeOut.activate();

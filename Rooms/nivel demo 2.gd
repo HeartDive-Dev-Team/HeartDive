@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export(AudioStream) var songToPlay;
+export var songToPlay = 0;
 
 
 # Called when the node enters the scene tree for the first time.
