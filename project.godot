@@ -27,6 +27,7 @@ gvar="*res://Global Variables/gvar.gd"
 MusicPlayer="*res://Objects/musicPlayer.tscn"
 RoomChanger="*res://Global Variables/roomChanger.tscn"
 HealthManager="*res://Global Variables/healthManager.tscn"
+EnemyTable="*res://Global Variables/enemyTable.tscn"
 
 [debug]
 
