@@ -9,6 +9,10 @@ var optionIndex = 0;
 onready var descripciones = get_node("Texts/Descriptions");
 onready var fadeOut = get_node("FadeOut");
 export var roomGoto = "";
+onready var cardA = get_node("Cards/cardA");
+onready var cardB = get_node("Cards/cardB");
+onready var cardC = get_node("Cards/cardC");
+onready var cards = [cardA, cardB, cardC];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +25,8 @@ func _process(delta):
 	#Phase 0: Select the Save File
 	match phase:
 		0:
+			for node in cards:
+				node.modulate = Color(1,1,1);
 			if(Input.is_action_just_pressed("ui_right")):
 				if(cardIndex < 2):
 					cardIndex += 1;
@@ -48,6 +54,7 @@ func _process(delta):
 				phase = -1;
 		#Phase 1: Load or Edit
 		1:
+			cards[cardIndex].modulate = Color(0,0.8,1);
 			if(Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("keyA")):
 				descripciones.get_child(cardIndex).text = "Empty";
 				get_node("Texts/Label").text = "Select your Save File";

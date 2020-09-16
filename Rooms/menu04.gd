@@ -8,20 +8,30 @@ var phase = 0;
 onready var arrow = get_node("selectionArrow");
 onready var FadeOut = get_node("FadeOut");
 var roomGoto = "";
+var soundTest = 0;
 
 onready var lbl_musicVol = get_node("Texts/Information/Music/lbl_musicVol");
 onready var lbl_SFXVol = get_node("Texts/Information/lbl_SFXVol");
 onready var lbl_Screen = get_node("Texts/Information/lbl_Screen");
+onready var lbl_SoundTest = get_node("Texts/Information/lbl_SoundTest");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	lbl_musicVol.text = convertMusicVolume(gvar.G_musicVolume);
+	lbl_SFXVol.text = convertMusicVolume(gvar.G_SFXVolume);
+	lbl_SoundTest.text = str(soundTest);
+	gvar.HUD_OFF();
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(active):
 		if(phase == 0):
+			lbl_Screen.modulate = Color(1,1,1);
+			lbl_SFXVol.modulate = Color(1,1,1);
+			lbl_musicVol.modulate = Color(1,1,1);
+			lbl_SoundTest.modulate = Color(1,1,1);
+			arrow.modulate = Color(1,1,1);
 			if(Input.is_action_just_pressed("ui_down")):
 				get_node("selectSFX").play();
 				if(indexMenu < 4):
@@ -45,6 +55,17 @@ func _process(delta):
 					arrow.position.y = 232;
 				3:
 					arrow.position.y = 312;
+					lbl_SoundTest.modulate = Color(1,1,0);
+					if(Input.is_action_just_pressed("ui_left")):
+						if(soundTest > 0):
+							soundTest -= 1;
+							get_node("selectSFX3").play();
+					if(Input.is_action_just_pressed("ui_right")):
+						if(soundTest < 9):
+							soundTest += 1;
+							get_node("selectSFX3").play();
+					lbl_SoundTest.text = str(soundTest);
+					
 				4:
 					arrow.position.y = 384;
 			
@@ -65,6 +86,7 @@ func _process(delta):
 						lbl_Screen.text = "Fullscreen";
 					OS.window_fullscreen = !OS.window_fullscreen;
 					phase = 0;
+					lbl_Screen.modulate = Color(0,1,1);
 				1: #Music Volume
 					if(Input.is_action_just_pressed("ui_left")):
 						if(gvar.G_musicVolume > -60):
@@ -76,6 +98,7 @@ func _process(delta):
 							get_node("selectSFX3").play();
 					AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), gvar.G_musicVolume);
 					lbl_musicVol.text = convertMusicVolume(gvar.G_musicVolume);
+					lbl_musicVol.modulate = Color(1,1,0);
 				2: #SFX Volume
 					if(Input.is_action_just_pressed("ui_left")):
 						if(gvar.G_SFXVolume > -60):
@@ -87,9 +110,28 @@ func _process(delta):
 							get_node("selectSFX3").play();
 					AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), gvar.G_SFXVolume);
 					lbl_SFXVol.text = convertMusicVolume(gvar.G_SFXVolume);
+					lbl_SFXVol.modulate = Color(1,1,0);
+				3:
+					MusicPlayer.changeSong(soundTest);
+					phase = 0;
+			arrow.modulate = Color(1,1,0);
 			if(Input.is_action_just_pressed("ui_accept")):
 					get_node("selectSFX2").play();
 					phase = 0;
 
 func convertMusicVolume(volume):
-	return str(volume);
+	match volume:
+		6:
+			return "MAX";
+		0:
+			return "High";
+		-6:
+			return "Med";
+		-12:
+			return "Low";
+		-18:
+			return "Very Low";
+		-60:
+			return "OFF"
+		_:
+			return "MIN";

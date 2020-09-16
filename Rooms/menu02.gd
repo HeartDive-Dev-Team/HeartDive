@@ -43,7 +43,7 @@ func _process(delta):
 				get_node("description").text = "Main Story of the game";
 			1:
 				square.changeIndex(144);
-				get_node("description").text = "General configuration of the game and Sound Test (Not available yet)";
+				get_node("description").text = "General configuration of the game and Sound Test";
 			2:
 				square.changeIndex(208);
 				get_node("description").text = "Extra content not featured in the Main Plot (Not available yet)";

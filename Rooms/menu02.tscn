@@ -195,7 +195,7 @@ tile_data = PoolIntArray( 65562, 4, 0, 131098, 5, 0, 196634, 6, 0, 262163, 0, 0,
 position = Vector2( 520, 288 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 11 )
-frame = 5
+frame = 4
 playing = true
 
 [editable path="FadeIn-Classic"]

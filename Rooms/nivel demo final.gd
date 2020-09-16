@@ -24,6 +24,7 @@ func _process(delta):
 	match scenePhase:
 		0: #Inicio
 			player.reading = true;
+			MusicPlayer.stopSong();
 			_delay(100);
 		1:
 			showMessage("Well, this is as far as this demo goes.");

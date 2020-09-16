@@ -73,24 +73,27 @@ __meta__ = {
 [node name="Music" type="Node2D" parent="Texts/Information"]
 
 [node name="lbl_musicVol" type="Label" parent="Texts/Information/Music"]
-margin_left = 728.0
+margin_left = 640.0
 margin_top = 144.0
 margin_right = 830.0
 margin_bottom = 178.0
 custom_fonts/font = ExtResource( 2 )
 text = "musicVol"
+align = 2
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="lbl_SFXVol" type="Label" parent="Texts/Information"]
-margin_left = 752.0
+margin_left = 640.0
 margin_top = 224.0
 margin_right = 830.0
 margin_bottom = 258.0
 custom_fonts/font = ExtResource( 2 )
 text = "SFXVol"
 align = 2
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -102,6 +105,18 @@ margin_right = 830.0
 margin_bottom = 114.0
 custom_fonts/font = ExtResource( 2 )
 text = "Windowed"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_SoundTest" type="Label" parent="Texts/Information"]
+margin_left = 712.0
+margin_top = 296.0
+margin_right = 830.0
+margin_bottom = 330.0
+custom_fonts/font = ExtResource( 2 )
+text = "00"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false

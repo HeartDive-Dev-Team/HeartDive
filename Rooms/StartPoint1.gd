@@ -10,6 +10,7 @@ onready var spawnBalls = get_node("spawnBalls");
 onready var text = get_node("CutsceneSystem-TextHandler/CanvasLayer/textBox");
 export var portraits = [];
 export var voices = [];
+onready var tutorialTiles = get_node("tiles-Tutorial");
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +26,7 @@ func _ready():
 		changePortrait(portraits[0]);
 		changeName("Macrófago");
 		changeAnimation("default");
+		tutorialTiles.modulate.a = 0;
 		gvar.HUD_OFF();
 	else:
 		scenePhase = 13;
@@ -32,6 +34,7 @@ func _ready():
 		player.reading = true;
 		playerActor.visible = false;
 		spawnBalls.visible = false;
+		tutorialTiles.modulate.a = 0;
 		get_node("CanvasLayer/FadeIn2").active = true;
 		get_node("CanvasLayer/FadeIn").visible = false;
 
@@ -106,6 +109,11 @@ func _process(delta):
 			player.reading = false;
 			player.get_node("Camera2D").position = Vector2(0, 0);
 			gvar.HUD_ON();
+			_delay(180);
 		13:
 			player.reading = false;
 			gvar.HUD_ON();
+			_delay(1);
+		14:
+			if(tutorialTiles.modulate.a < 1):
+				tutorialTiles.modulate.a += 0.2;
