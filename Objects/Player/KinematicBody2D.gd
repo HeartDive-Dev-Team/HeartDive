@@ -18,6 +18,7 @@ var coyote = 0;
 var coyoteMAX = 20;
 var jumped = false;
 var bolDobleSalto = true;
+var uppercutting = false;
 onready var jumpBuffer = get_node("jumpBuffer");
 
 var WJUMPonwall = false;
@@ -171,10 +172,18 @@ func _physics_process(delta):
 	#Reset position
 	if(Input.is_action_just_pressed("ui_cancel")):
 		die();
+	#Uppercut /////////////////////////////////////////
+	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyD") and bolGround() and !isUsingAbility()):
+		uppercut()
+	if (uppercutting):
+		if (velocity.x > 100):
+			velocity.x = 100
+	if (velocity.y >= 0):
+		get_node("AnimatedSprite/uppercutHit/gpUpper").disabled = true
+		uppercutting = false
 	#Golpe 1///////////////////////////////////////////
 	if(reading == false):
-		
-		if Input.is_action_just_pressed("keyD"):
+		if Input.is_action_just_pressed("keyD") and !Input.is_action_pressed("ui_up"):
 			if(habilidadCooldown <= 0):
 				dar_golpe1(false); #Don't skip the usage check
 			elif(habilidadCooldown >= 1 and myAnims.punch1_number == 2):
@@ -264,6 +273,7 @@ func _process(delta):
 		get_node("AnimatedSprite/punchLhit/golpe").position.x = 4
 	elif (intMove == -1 and habilidadCooldown <= 0):
 		get_node("AnimatedSprite/punchLhit/golpe").position.x = -4
+	get_node("AnimatedSprite/uppercutHit/gpUpper").position.x = 6*facingDirection
 
 func get_wall_side():
 	if(get_node("colRight").is_colliding()):
@@ -395,3 +405,17 @@ func _on_gpHit_area_entered(area):
 	if ("enemy" in area.get_parent().get_name() and "hurtBox" in area.get_name()):
 		area.get_parent().takeDamage(basicDMGdealer, 0);
 		$punchSFX_2.play();
+
+func uppercut():
+	jump(700)
+	get_node("AnimatedSprite/uppercutHit/gpUpper").disabled = false
+	uppercutting = true
+	#PONER ANIMACION DE UPPERCUT Y QUE SE CLAVE EN EL FRAME FINAL HASTA QUE BAJA
+
+
+func _on_uppercutHit_area_entered(area):
+	if ("enemy" in area.get_parent().get_name() and "hurtBox" in area.get_name()):
+		if(position.x > area.get_parent().position.x):
+			area.get_parent().takeDamage(basicDMGdealer, -10);
+		else:
+			area.get_parent().takeDamage(basicDMGdealer, 10);
