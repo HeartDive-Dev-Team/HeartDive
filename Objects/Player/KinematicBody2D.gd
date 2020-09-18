@@ -173,7 +173,7 @@ func _physics_process(delta):
 	if(Input.is_action_just_pressed("ui_cancel")):
 		die();
 	#Uppercut /////////////////////////////////////////
-	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyD") and bolGround() and !isUsingAbility()):
+	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyA") and bolGround() and !isUsingAbility()):
 		uppercut()
 	if (uppercutting):
 		if (velocity.x > 100):
