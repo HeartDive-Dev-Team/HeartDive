@@ -12,7 +12,7 @@ func _ready():
 	playSong();
 	musicArray.resize(99);
 	musicArray[0] = preload("res://Music/HD OST - Menu.ogg");
-	musicArray[1] = preload("res://Music/AB OST - Welcome.ogg");
+	musicArray[1] = preload("res://Music/HD OST - Welcome.ogg");
 	musicArray[2] = preload("res://Music/HD OST - Spawn_1.ogg");
 	musicArray[2].loop = false;
 	musicArray[3] = preload("res://Music/HD OST - Spawn_2.ogg");

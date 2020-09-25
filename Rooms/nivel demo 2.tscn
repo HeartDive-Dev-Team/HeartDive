@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Objects/tileset-1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/spikes.tscn" type="PackedScene" id=2]
@@ -10,31 +10,10 @@
 [ext_resource path="res://Backgrounds/ParallaxTemplate.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/FadeIn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Backgrounds/BGOsTemplate.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sprites/macrofago_textface.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Resource files/TextBox-Macrofago.tres" type="SpriteFrames" id=11]
 [ext_resource path="res://Rooms/nivel demo 2.gd" type="Script" id=12]
 [ext_resource path="res://Objects/Player/spawnPoint.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Objects/FadeOut.tscn" type="PackedScene" id=15]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 30, 30 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 30, 30, 30 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ) ],
-"loop": true,
-"name": "happy",
-"speed": 5.0
-} ]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 12 )
@@ -184,7 +163,7 @@ executeScriptonEnd = true
 scriptToRead = ExtResource( 7 )
 
 [node name="textFace" parent="CanvasLayer/textBox" index="4"]
-frames = SubResource( 3 )
+frames = ExtResource( 11 )
 
 [node name="CollisionShape2D" parent="CanvasLayer/textBox/Area2D" index="0"]
 position = Vector2( -16, 0 )
@@ -203,7 +182,7 @@ position = Vector2( 0, 48 )
 [node name="TileMap" parent="BGOs" index="0"]
 z_index = -2
 centered_textures = true
-tile_data = PoolIntArray( -393204, 5, 0, -393195, 5, 0, -327668, 5, 0, -327659, 5, 0, -262132, 5, 0, -262123, 5, 0, -262098, 5, 0, -196596, 5, 0, -196587, 5, 0, -196562, 5, 0, -196559, 1, 0, -131060, 5, 0, -131051, 5, 0, -131026, 5, 0, -65524, 5, 0, -65515, 5, 0, -65490, 5, 0, 12, 5, 0, 21, 5, 0, 65548, 5, 0, 65557, 5, 0, 131084, 5, 0, 131093, 5, 0, 196620, 5, 0, 196629, 5, 0, 196634, 2, 0, 262156, 5, 0, 262165, 5, 0, 327692, 5, 0, 327701, 5, 0, 393225, 0, 0, 393228, 5, 0, 393237, 5, 0, 458755, 0, 0, 458764, 5, 0, 458773, 5, 0, 524300, 5, 0, 524309, 5, 0, 524331, 0, 0, 589836, 5, 0, 589845, 5, 0, 589855, 5, 0, 655372, 5, 0, 655381, 5, 0, 655391, 5, 0, 720927, 5, 0, 786463, 5, 0, 917540, 2, 0, 1048604, 0, 0, 1310764, 0, 0 )
+tile_data = PoolIntArray( -655328, 12, 0, -589792, 12, 0, -524256, 12, 0, -458720, 12, 0, -393204, 5, 0, -393195, 5, 0, -393184, 12, 0, -327668, 5, 0, -327659, 5, 0, -327648, 12, 0, -262132, 5, 0, -262123, 5, 0, -262112, 12, 0, -262098, 5, 0, -196596, 5, 0, -196587, 5, 0, -196576, 12, 0, -196562, 5, 0, -196559, 1, 0, -131060, 5, 0, -131051, 5, 0, -131040, 12, 0, -131026, 5, 0, -65524, 5, 0, -65515, 5, 0, -65504, 12, 0, -65490, 5, 0, 12, 5, 0, 21, 5, 0, 32, 12, 0, 65548, 5, 0, 65557, 5, 0, 65568, 12, 0, 131084, 5, 0, 131093, 5, 0, 131104, 12, 0, 196620, 5, 0, 196629, 5, 0, 196634, 2, 0, 196640, 12, 0, 262156, 5, 0, 262165, 5, 0, 327692, 5, 0, 327699, 14, 0, 327701, 5, 0, 393225, 0, 0, 393228, 5, 0, 393237, 5, 0, 458755, 0, 0, 458764, 5, 0, 458773, 5, 0, 524300, 5, 0, 524309, 5, 0, 524331, 0, 0, 589836, 5, 0, 589845, 5, 0, 589855, 5, 0, 655372, 5, 0, 655381, 5, 0, 655391, 5, 0, 655396, 15, 0, 720927, 5, 0, 786463, 5, 0, 917540, 2, 0, 1048604, 0, 0, 1310764, 0, 0 )
 
 [node name="TileMap2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 800, 512 )

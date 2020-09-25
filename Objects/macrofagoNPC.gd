@@ -5,6 +5,7 @@ extends Node2D
 var velocity = 0;
 var maxVelocity = 0.1;
 var phase = 0;
+var speed = Vector2(0, 0);
 onready var animate = get_node("animationParts");
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,8 @@ func _process(delta):
 			phase = 0;
 	
 	position.y = position.y + velocity;
+	
+	position += speed;
 	
 func flipSprite():
 	scale = -scale;

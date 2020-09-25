@@ -42,6 +42,9 @@ func showMessage(msg):
 		myTextWriter.message = msg;
 		myTextWriter.showText();
 
+func endMessage():
+	myTextWriter.invisible();
+
 func closeMessage():
 	readingText = false;
 	

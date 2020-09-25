@@ -24,7 +24,7 @@ func _ready():
 		#Portrait default
 		changeVoice(voices[0]);
 		changePortrait(portraits[0]);
-		changeName("Macrófago");
+		changeName("???");
 		changeAnimation("default");
 		tutorialTiles.modulate.a = 0;
 		gvar.HUD_OFF();
@@ -91,7 +91,7 @@ func _process(delta):
 			playerActor.animation = "player_2";
 			_delay(90);
 		8:
-			showMessage("Oye, Neutrófilo!");
+			showMessage("Hey! Hey, you there.");
 			_delay(0);
 		9:
 			playerActor.animation = "player_3";
@@ -103,9 +103,10 @@ func _process(delta):
 			player.jump(player.JUMP_SPEED/2);
 			_delay(0);
 		11:
-			showMessage("El corazón está siendo atacado y necesito tu ayuda para defenderlo.");
+			showMessage("The heart is under attack and I need your help to defend it.");
 			_delay(0);
 		12:
+			endMessage();
 			player.reading = false;
 			player.get_node("Camera2D").position = Vector2(0, 0);
 			gvar.HUD_ON();

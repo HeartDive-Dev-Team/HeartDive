@@ -77,4 +77,7 @@ func showText():
 
 func closeText():
 	active = false;
+	#visible = false;
+
+func invisible():
 	visible = false;

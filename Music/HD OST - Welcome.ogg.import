@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/HD OST - Welcome.ogg-f8b1c88f4af6d31b69082f4d41f7fcbf.oggstr"
+
+[deps]
+
+source_file="res://Music/HD OST - Welcome.ogg"
+dest_files=[ "res://.import/HD OST - Welcome.ogg-f8b1c88f4af6d31b69082f4d41f7fcbf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
