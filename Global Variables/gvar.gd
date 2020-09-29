@@ -18,6 +18,7 @@ var G_MAXHealth = 5;
 var G_playerWalljump = true;
 var G_playerDash = true;
 var G_playerPunch = true;
+var G_playerStamina = 100;
 
 ###########################
 #    In-Game Variables    #------------------------------

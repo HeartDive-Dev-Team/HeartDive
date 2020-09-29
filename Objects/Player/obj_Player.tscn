@@ -50,6 +50,7 @@ one_shot = true
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
 animation = "jump"
+frame = 1
 playing = true
 script = ExtResource( 4 )
 __meta__ = {

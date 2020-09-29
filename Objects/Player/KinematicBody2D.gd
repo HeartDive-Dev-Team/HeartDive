@@ -20,7 +20,7 @@ var jumped = false;
 var bolDobleSalto = true;
 var uppercutting = false;
 onready var jumpBuffer = get_node("jumpBuffer");
-
+onready var misile = preload("res://Objects/player_misile.tscn")
 var WJUMPonwall = false;
 
 var habilidadCooldown = 0;
@@ -172,8 +172,13 @@ func _physics_process(delta):
 	#Reset position
 	if(Input.is_action_just_pressed("ui_cancel")):
 		die();
+	#Misile
+	if (Input.is_action_pressed("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
+		velocity.x = 0
+	if (Input.is_action_just_released("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
+		createMisile()
 	#Uppercut /////////////////////////////////////////
-	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyA") and bolGround() and !isUsingAbility()):
+	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyA") and bolGround() and !isUsingAbility() and gvar.G_playerStamina >= 50):
 		uppercut()
 	if (uppercutting):
 		if (velocity.x > 100):
@@ -201,7 +206,7 @@ func _physics_process(delta):
 			if(get_node("AnimatedSprite/gpHit/gpSplash").disabled == false):
 				get_node("AnimatedSprite/gpHit/gpSplash").disabled = true;
 				get_node("AnimatedSprite/gpHit/gpGolpe").disabled = true;
-		if(Input.is_action_pressed("keyA") and Input.is_action_pressed("ui_down") and pounding and !isUsingAbility() and poundCount > 0 and !bolGround()):
+		if(Input.is_action_pressed("keyA") and Input.is_action_pressed("ui_down") and pounding and !isUsingAbility() and poundCount > 0 and !bolGround() and gvar.G_playerStamina >= 20):
 			groundPound();
 		elif(!pounding):
 			#Phase 1: Float in mid-air
@@ -246,6 +251,11 @@ func _physics_process(delta):
 func _process(delta):
 	get_node("Camera2D/CanvasLayer/LEvida").set_text("HP: " + str(gvar.G_playerHealth))
 	get_node("Camera2D/CanvasLayer/LEinvencible").set_text(str(coyote) + " :Coyote")
+	
+	if(gvar.G_playerStamina <100 and bolGround()):
+		gvar.G_playerStamina += 0.5
+	if (gvar.G_playerStamina < 0):
+		gvar.G_playerStamina = 0
 	
 	if(inicioGolpeL and bolGround()):
 		if (facingDirection == -1):
@@ -380,6 +390,7 @@ func groundPound():
 	myAnims.groundPoundAnims(0);
 	$gpSFX_1.playing = false;
 	$gpSFX_2.playing = false;
+	gvar.G_playerStamina -= 20
 	#if(velocity.x == 0):
 		#velocity.x = facingDirection * 100;
 
@@ -400,6 +411,21 @@ func dobleSalto():
 func setStun(stunAmount):
 	stun = stunAmount;
 
+func createMisile():
+	var e = misile.instance()
+	e.position = position
+	e.velocity.x = 0
+	e.velocity.y = 0
+	if (Input.is_action_pressed("ui_up")):
+		e.velocity.y -= 30
+	elif (Input.is_action_pressed("ui_down")):
+		e.velocity.y += 30
+	if (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
+		e.velocity.x = 30 * facingDirection
+	if (!Input.is_action_pressed("ui_up") and !Input.is_action_pressed("ui_down") and !Input.is_action_pressed("ui_right") and !Input.is_action_pressed("ui_left")):
+		e.velocity.x = 30 * facingDirection
+	get_tree().get_root().add_child(e)
+	gvar.G_playerStamina -= 25
 
 func _on_gpHit_area_entered(area):
 	if ("enemy" in area.get_parent().get_name() and "hurtBox" in area.get_name()):
@@ -410,6 +436,7 @@ func uppercut():
 	jump(700)
 	get_node("AnimatedSprite/uppercutHit/gpUpper").disabled = false
 	uppercutting = true
+	gvar.G_playerStamina -= 50
 	#PONER ANIMACION DE UPPERCUT Y QUE SE CLAVE EN EL FRAME FINAL HASTA QUE BAJA
 
 
