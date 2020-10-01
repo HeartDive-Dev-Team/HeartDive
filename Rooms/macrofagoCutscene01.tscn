@@ -41,6 +41,9 @@ tile_data = PoolIntArray( -196596, 1, 196608, -196595, 1, 196609, -196594, 1, 19
 [node name="obj_Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 496, 464 )
 
+[node name="AnimatedSprite" parent="obj_Player" index="1"]
+frame = 0
+
 [node name="Camera2D" parent="obj_Player" index="3"]
 limit_left = 0
 limit_top = 0
