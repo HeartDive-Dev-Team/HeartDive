@@ -65,7 +65,7 @@ func _process(delta):
 		12:
 			changeAnimation("confused");
 			macrophage.get_node("AnimatedSprite").animation = "default";
-			showMessage("You must be a Neutrophile, aren't you? Only one of your kind would have such a fast-paced combat style.");
+			showMessage("You must be a Neutrophil, aren't you? Only one of your kind would have such a fast-paced combat style.");
 			_delay(0);
 		13:
 			changeAnimation("default");
