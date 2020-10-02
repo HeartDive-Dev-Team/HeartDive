@@ -13,12 +13,12 @@ var touching_wall = false;
 var startPos;
 var reading = false;
 var facingDirection = -1;
+var observing = false;
 
 var coyote = 0;
 var coyoteMAX = 20;
 var jumped = false;
 var bolDobleSalto = true;
-var uppercutting = false;
 onready var jumpBuffer = get_node("jumpBuffer");
 onready var misile = preload("res://Objects/player_misile.tscn")
 var WJUMPonwall = false;
@@ -50,6 +50,10 @@ var splashTimer = 0;
 var keyLeft = 0;
 var keyRight = 0;
 var intMove = 0;
+
+var uppercutting = false;
+var uppercutPhase = -1;
+var uppercutTimer = 0;
 
 var invencible = 0;
 var invencibleMAX = 120;
@@ -178,14 +182,25 @@ func _physics_process(delta):
 	if (Input.is_action_just_released("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
 		createMisile()
 	#Uppercut /////////////////////////////////////////
-	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyA") and bolGround() and !isUsingAbility() and gvar.G_playerStamina >= 50):
+	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyA") and bolGround() and !isUsingAbility() and gvar.G_playerStamina >= 50 and !uppercutting):
 		uppercut()
 	if (uppercutting):
 		if (velocity.x > 100):
 			velocity.x = 100
-	if (velocity.y >= 0):
+		if (velocity.x < -100):
+			velocity.x = -100;
+	#Phase 0:--------------
+		if(uppercutPhase == 0 and uppercutTimer > 0):
+			velocity.y = 0;
+			uppercutTimer -= 1;
+		elif(uppercutPhase == 0):
+			uppercutPhase = 1;
+			jump(700);
+	if (velocity.y >= 0 and uppercutting and uppercutPhase == 1):
 		get_node("AnimatedSprite/uppercutHit/gpUpper").disabled = true
 		uppercutting = false
+		if(myAnims.jump == "uppercut_1"):
+			myAnims.defaultAnims();
 	#Golpe 1///////////////////////////////////////////
 	if(reading == false):
 		if Input.is_action_just_pressed("keyD") and !Input.is_action_pressed("ui_up"):
@@ -433,16 +448,18 @@ func _on_gpHit_area_entered(area):
 		$punchSFX_2.play();
 
 func uppercut():
-	jump(700)
 	get_node("AnimatedSprite/uppercutHit/gpUpper").disabled = false
 	uppercutting = true
 	gvar.G_playerStamina -= 50
-	#PONER ANIMACION DE UPPERCUT Y QUE SE CLAVE EN EL FRAME FINAL HASTA QUE BAJA
+	myAnims.uppercutAnims();
+	uppercutPhase = 0;
+	uppercutTimer = 15;
 
 
 func _on_uppercutHit_area_entered(area):
 	if ("enemy" in area.get_parent().get_name() and "hurtBox" in area.get_name()):
 		if(position.x > area.get_parent().position.x):
-			area.get_parent().takeDamage(basicDMGdealer, -10);
+			area.get_parent().takeDamage(basicDMGdealer * 2, -10);
 		else:
-			area.get_parent().takeDamage(basicDMGdealer, 10);
+			area.get_parent().takeDamage(basicDMGdealer * 2, 10);
+		$punchSFX_2.play();

@@ -9,6 +9,7 @@ var fall = "fall";
 var slide = "slide";
 var flippable = true;
 var gotHurt = -1;
+var isDefaultAnims = false;
 
 var punch1_number = 1;
 
@@ -24,7 +25,7 @@ func _process(delta):
 			get_node("punchLhit/golpe").disabled = true
 	else:
 			get_node("punchLhit/golpe").disabled = true
-		
+	
 	if(flippable and !objPlayer.reading):
 		if(objPlayer.intMove == 1):
 			flip_h = false;
@@ -64,6 +65,17 @@ func _process(delta):
 	elif(gotHurt == 0):
 		modulate.a = 1;
 		gotHurt = -1;
+	
+	#Looking up or down animation
+	if(!objPlayer.reading):
+		if(Input.is_action_pressed("ui_up") and isDefaultAnims):
+			idle = "idle_above";
+			get_parent().get_node("Camera2D").cooldown -= 1;
+		elif(Input.is_action_pressed("ui_down") and isDefaultAnims):
+			idle = "idle_below";
+			get_parent().get_node("Camera2D").cooldown -= 1;
+		elif(isDefaultAnims):
+			idle = "idle";
 func getHurt():
 	gotHurt = objPlayer.invencibleMAX;
 func defaultAnims():
@@ -73,6 +85,7 @@ func defaultAnims():
 	fall = "fall";
 	slide = "slide";
 	flippable = true;
+	isDefaultAnims = true;
 func punchAnims():
 	if(punch1_number == 1):
 		idle = "punchL";
@@ -88,6 +101,7 @@ func punchAnims():
 		punch1_number = 1;
 	flippable = false;
 	frame = 0;
+	isDefaultAnims = false;
 func airPunchAnims(side):
 	if(side == 0):
 		idle = "punchAir";
@@ -96,6 +110,7 @@ func airPunchAnims(side):
 		fall = "punchAir";
 	flippable = false;
 	frame = 0;
+	isDefaultAnims = false;
 func groundPoundAnims(value):
 	if(value == 0):
 		idle = "groundPound_1";
@@ -107,9 +122,20 @@ func groundPoundAnims(value):
 		walk = "fall";
 		jump = "fall";
 		fall = "fall";
+	isDefaultAnims = false;
 func dashAnims():
 	idle = "dash";
 	walk = "dash";
 	jump = "jump";
 	fall = "fall";
 	flippable = false;
+	isDefaultAnims = false;
+	
+func uppercutAnims():
+	idle = "uppercut_1";
+	walk = "uppercut_1";
+	jump = "uppercut_1";
+	fall = "uppercut_1";
+	slide = "uppercut_1";
+	flippable = false;
+	isDefaultAnims = false;
