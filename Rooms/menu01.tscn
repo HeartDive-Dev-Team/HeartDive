@@ -70,7 +70,11 @@ position = Vector2( 448, 296 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
 animation = "sleep"
+<<<<<<< HEAD
 frame = 3
+=======
+frame = 1
+>>>>>>> b3d0820183e00ba220cf8bc6b95c5f5d8c88e09c
 playing = true
 script = ExtResource( 9 )
 
