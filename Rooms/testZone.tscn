@@ -4,7 +4,6 @@
 [ext_resource path="res://Objects/Enemies/enemy1_Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/tileset-1.tscn" type="PackedScene" id=3]
 
-
 [node name="Node2D" type="Node2D"]
 
 [node name="obj_Player" parent="." instance=ExtResource( 1 )]

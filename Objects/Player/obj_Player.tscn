@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Sprites/Resource files/objPlayerSprites.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Objects/Player/playerWallCheck.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://SFX Files/HD SFX - Punch_3.wav" type="AudioStream" id=14]
 [ext_resource path="res://SFX Files/HD SFX - Punch_1.wav" type="AudioStream" id=15]
 [ext_resource path="res://SFX Files/HD SFX - Punch_2.wav" type="AudioStream" id=16]
+[ext_resource path="res://Objects/Player/Pause.gd" type="Script" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 16 )
@@ -50,7 +51,7 @@ one_shot = true
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 1
+frame = 3
 playing = true
 script = ExtResource( 4 )
 __meta__ = {
@@ -210,6 +211,32 @@ bus = "SFX"
 [node name="punchSFX_3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 bus = "SFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+margin_left = 176.0
+margin_top = 176.0
+margin_right = 216.0
+margin_bottom = 216.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blackOverlay" type="ColorRect" parent="CanvasLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -176.0
+margin_top = -176.0
+margin_right = 648.0
+margin_bottom = 264.0
+color = Color( 0, 0, 0, 0.45098 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="AnimatedSprite/gpHit" to="." method="_on_gpHit_area_entered"]
 [connection signal="area_entered" from="AnimatedSprite/punchLhit" to="." method="_on_punchLhit_area_entered"]
 [connection signal="area_entered" from="AnimatedSprite/uppercutHit" to="." method="_on_uppercutHit_area_entered"]

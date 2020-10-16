@@ -173,9 +173,6 @@ func _physics_process(delta):
 				$kickSFX.play();
 	
 	#DEBUG:
-	#Reset position
-	if(Input.is_action_just_pressed("ui_cancel")):
-		die();
 	#Misile
 	if (Input.is_action_pressed("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
 		velocity.x = 0
@@ -463,3 +460,6 @@ func _on_uppercutHit_area_entered(area):
 		else:
 			area.get_parent().takeDamage(basicDMGdealer * 2, 10);
 		$punchSFX_2.play();
+
+func pause():
+	get_tree().paused = true
