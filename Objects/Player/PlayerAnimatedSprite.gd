@@ -57,6 +57,8 @@ func _process(delta):
 			modulate = Color(1,0,0);
 		else:
 			modulate = Color(1,1,1);
+		if(gotHurt < 110 and gotHurt > 108):
+			defaultAnims();
 		#Transparency effect
 		if(gotHurt % 2 == 0):
 			modulate.a = 0.1;
@@ -78,6 +80,7 @@ func _process(delta):
 			idle = "idle";
 func getHurt():
 	gotHurt = objPlayer.invencibleMAX;
+	hurtAnims();
 func defaultAnims():
 	idle = "idle";
 	walk = "walk";
@@ -128,6 +131,15 @@ func dashAnims():
 	walk = "dash";
 	jump = "jump";
 	fall = "fall";
+	flippable = false;
+	isDefaultAnims = false;
+
+func hurtAnims():
+	idle = "hurt";
+	walk = "hurt";
+	jump = "hurt";
+	fall = "hurt";
+	slide = "hurt";
 	flippable = false;
 	isDefaultAnims = false;
 	

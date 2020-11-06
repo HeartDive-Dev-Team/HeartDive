@@ -19,6 +19,7 @@ func _process(delta):
 		delay -= 1;
 	if(delay <= 0):
 		get_tree().change_scene(roomGoto);
+		SceneManager.cleanSpawnedNodes();
 		reset();
 		
 func activate(var room, var myDelay):

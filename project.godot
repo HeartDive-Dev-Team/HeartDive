@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Project HeartDive (Alpha 1.3.2)"
+config/name="Project HeartDive (Alpha 1.3.4)"
 config/description="HeartDive's Alpha, currently showcasing gimmicks and the first parts of the story."
-run/main_scene="res://Rooms/menu01.tscn"
+run/main_scene="res://Rooms/introScreen.tscn"
 config/icon="res://Sprites/GameIcon.png"
 config/windows_native_icon="res://Sprites/GameIcon.ico"
 
@@ -28,6 +28,7 @@ MusicPlayer="*res://Objects/musicPlayer.tscn"
 RoomChanger="*res://Global Variables/roomChanger.tscn"
 HealthManager="*res://Global Variables/healthManager.tscn"
 EnemyTable="*res://Global Variables/enemyTable.tscn"
+SceneManager="*res://Rooms/sceneManager.tscn"
 
 [debug]
 

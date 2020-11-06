@@ -4,6 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 onready var music = get_node("AudioStreamPlayer");
 var musicArray = [];
+var musicPlaying = 0;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,4 +34,5 @@ func stopSong():
 func changeSong(songToPlay):
 	if(music.stream != musicArray[songToPlay]):
 		music.stream = musicArray[songToPlay];
+		musicPlaying = songToPlay;
 	playSong();

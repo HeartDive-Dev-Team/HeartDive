@@ -29,6 +29,9 @@ var G_targetSpawn = -1; #The target spawnpoint, used between every single room t
 # 0 or more = spawnpoint ID
 var G_checkpointRoom = ""; #The room where the checkpoint is
 
+var G_preDeathRoom = ""; #The room in which you were before dying
+var G_preDeathSong = 0;
+
 ###########################
 #    In-Game Variables    #------------------------------
 ###########################

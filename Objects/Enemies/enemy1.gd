@@ -21,6 +21,7 @@ var mode = "normal" #Valid modes: "normal", "stun", "dead"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity.x = 0;
+	add_to_group("enemies");
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

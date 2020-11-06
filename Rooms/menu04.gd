@@ -114,6 +114,9 @@ func _process(delta):
 				3:
 					MusicPlayer.changeSong(soundTest);
 					phase = 0;
+				4:
+					$cancelSFX.play();
+					phase = 0;
 			arrow.modulate = Color(1,1,0);
 			if(Input.is_action_just_pressed("ui_accept")):
 					get_node("selectSFX2").play();

@@ -22,6 +22,7 @@ var mode = "normal" #Valid modes: "normal", "stun", "dead"
 func _ready():
 	velocity.x = 0;
 	velocity.y = -WALKSPD;
+	add_to_group("enemies");
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -92,7 +92,7 @@ frames = ExtResource( 4 )
 playing = true
 
 [node name="pressKey" type="AnimatedSprite" parent="CanvasLayer/textBox"]
-position = Vector2( 600, 72 )
+position = Vector2( 584, 72 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
 animation = "on"

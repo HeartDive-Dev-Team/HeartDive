@@ -31,4 +31,4 @@ func _process(delta):
 	position += speed;
 	
 func flipSprite():
-	scale = -scale;
+	scale.x = -scale.x;

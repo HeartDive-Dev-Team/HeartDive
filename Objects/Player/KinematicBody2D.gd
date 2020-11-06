@@ -175,12 +175,13 @@ func _physics_process(delta):
 	#DEBUG:
 	#Reset position
 	if(Input.is_action_just_pressed("ui_cancel")):
-		die();
-	#Misile
-	if (Input.is_action_pressed("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
-		velocity.x = 0
-	if (Input.is_action_just_released("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
-		createMisile()
+		#die();
+		pass;
+	#Misile-------------------
+	#if (Input.is_action_pressed("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
+	#	velocity.x = 0
+	#if (Input.is_action_just_released("keyShoot") and bolGround() and gvar.G_playerStamina >= 25):
+	#	createMisile()
 	#Uppercut /////////////////////////////////////////
 	if(Input.is_action_pressed("ui_up") and Input.is_action_pressed("keyA") and bolGround() and !isUsingAbility() and gvar.G_playerStamina >= 50 and !uppercutting):
 		uppercut()
@@ -317,13 +318,14 @@ func die():
 	# ir a escena transición con cartel luminoso de moriste jaja que wacho
 	# position = tablaCheckpoints[idCheckpoint].position
 	gvar.G_playerHealth = gvar.G_MAXHealth;
-	get_tree().reload_current_scene();
+	SceneManager.reloadScene();
 	
 func takeDamage (cantDamage):
 	if invencible == 0:
 		gvar.G_playerHealth -= cantDamage
 		invencible = invencibleMAX
 		myAnims.getHurt();
+		$gotHurtSFX.play();
 		velocity.x = -200 * facingDirection;
 		velocity.y = -300;
 		if gvar.G_playerHealth <= 0:

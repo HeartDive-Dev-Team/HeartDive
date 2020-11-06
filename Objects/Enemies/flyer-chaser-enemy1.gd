@@ -26,6 +26,7 @@ var mode = "normal" #Valid modes: "normal", "stun" "dead"
 func _ready():
 	velocity.x = 0;
 	velocity.y = -WALKSPD;
+	add_to_group("enemies");
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,7 +74,7 @@ func _process(delta):
 	elif(get_y_side() == -1 and velocity.y < WALKSPD/2):
 		velocity.y += 2
 	
-	if (chaseCounter > 0):
+	if (chaseCounter > 0 and player != null):
 		if (player.position.y > position.y and velocity.y < WALKSPD/2):
 			velocity.y += 3
 		if (player.position.y < position.y and velocity.y > -WALKSPD/2):
