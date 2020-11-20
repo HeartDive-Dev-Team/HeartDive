@@ -40,6 +40,7 @@ extents = Vector2( 13, 1 )
 [node name="obj_Player" type="KinematicBody2D" groups=[
 "playerGroup",
 ]]
+pause_mode = 2
 position = Vector2( 176, 176 )
 z_index = 10
 script = ExtResource( 5 )
@@ -52,6 +53,7 @@ one_shot = true
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
 animation = "idle"
+frame = 2
 playing = true
 script = ExtResource( 4 )
 __meta__ = {

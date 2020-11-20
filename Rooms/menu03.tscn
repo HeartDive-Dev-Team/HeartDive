@@ -183,9 +183,6 @@ stream = ExtResource( 10 )
 visible = false
 z_index = 6
 
-[node name="Sprite" parent="FadeOut" index="0"]
-animation = "white"
-
 [node name="escInfo" type="Label" parent="."]
 margin_left = 320.0
 margin_top = 449.0

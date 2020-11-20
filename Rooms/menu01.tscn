@@ -58,6 +58,7 @@ roomGoto = "res://Rooms/menu02.tscn"
 visible = false
 position = Vector2( 8, 0 )
 z_index = 5
+opacitySpeed = 0.2
 
 [node name="BG" parent="CanvasLayer" instance=ExtResource( 1 )]
 

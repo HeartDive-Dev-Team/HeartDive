@@ -2,17 +2,15 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-var myOpacity = 1;
-export var opacitySpeed = 0.02;
+# var a = 2
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	visible = true;
+	MusicPlayer.stopSong();
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if(myOpacity > 0):
-		myOpacity -= opacitySpeed;
-	modulate.a = myOpacity;
+#func _process(delta):
+#	pass

@@ -117,11 +117,17 @@ func takeDamage(damageRecived, multiplier):
 		die();
 
 func _on_Area2D2_body_entered(body):
-	if (body.get_name() == "obj_Player"):
+	if (collidableObjects(body)):
 		player = body
 		chaseCounter = 600;
 		chaseCounterCountdown = false
 
 func _on_Area2D2_body_exited(body):
-	if (body.get_name() == "obj_Player"):
+	if (collidableObjects(body)):
 		chaseCounterCountdown = true
+		
+func collidableObjects(body):
+	if(body.get_name() == "obj_Player" or body.get_name() == "companionTemplate"):
+		return true;
+	else:
+		return false;

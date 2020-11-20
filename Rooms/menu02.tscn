@@ -131,9 +131,7 @@ __meta__ = {
 [node name="FadeIn-Classic" parent="." instance=ExtResource( 5 )]
 visible = false
 z_index = 3
-
-[node name="Sprite" parent="FadeIn-Classic" index="0"]
-animation = "white"
+opacitySpeed = 0.1
 
 [node name="SelectSquare" type="AnimatedSprite" parent="."]
 position = Vector2( 104, 144 )
@@ -195,7 +193,7 @@ tile_data = PoolIntArray( 65562, 4, 0, 131098, 5, 0, 196634, 6, 0, 262163, 0, 0,
 position = Vector2( 520, 288 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 11 )
-frame = 4
+frame = 2
 playing = true
 
 [editable path="FadeIn-Classic"]

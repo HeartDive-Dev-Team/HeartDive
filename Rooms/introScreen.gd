@@ -17,6 +17,8 @@ func _ready():
 func _process(delta):
 	logo.position += logoVelocity;
 	logoVelocity.y += 0.5;
+	if(Input.is_action_just_pressed("ui_accept")):
+		scenePhase = 5;
 	match(scenePhase):
 		0:
 			logo.visible = false;
@@ -49,7 +51,7 @@ func _process(delta):
 			_delay(90);
 		5:
 			get_node("FadeOut").activate();
-			RoomChanger.activate(roomGoto, 120);
+			RoomChanger.activate(roomGoto, 60);
 			_delay(0);
 		6:
 			logoVelocity = Vector2(0, 0);

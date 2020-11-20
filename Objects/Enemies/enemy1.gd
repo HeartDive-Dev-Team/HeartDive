@@ -77,12 +77,12 @@ func die():
 	queue_free();
 
 func _on_Area2D_body_entered(body):
-	if(body.get_name() == "obj_Player"):
+	if(collidableObjects(body)):
 		objetoColisionado = body
 		colisionando = true
 	
 func _on_Area2D_body_exited(body):
-	if(body.get_name() == "obj_Player"):
+	if(collidableObjects(body)):
 		colisionando = false
 
 func takeDamage(damageRecived, multiplier):
@@ -94,3 +94,9 @@ func takeDamage(damageRecived, multiplier):
 	if health <= 0:
 		die();
 		#contadorInvencible = 10;
+
+func collidableObjects(body):
+	if(body.get_name() == "obj_Player" or body.get_name() == "companionTemplate"):
+		return true;
+	else:
+		return false;

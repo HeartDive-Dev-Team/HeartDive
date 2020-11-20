@@ -82,12 +82,12 @@ func get_y_side():
 	return 0;
 
 func _on_Area2D_body_entered(body):
-	if(body.get_name() == "obj_Player"):
+	if(collidableObjects(body)):
 		objetoColisionado = body
 		colisionando = true
 	
 func _on_Area2D_body_exited(body):
-	if(body.get_name() == "obj_Player"):
+	if(collidableObjects(body)):
 		colisionando = false
 
 func takeDamage(damageRecived, multiplier):
@@ -98,3 +98,9 @@ func takeDamage(damageRecived, multiplier):
 	velocity.y = -150;
 	if health <= 0:
 		die();
+
+func collidableObjects(body):
+	if(body.get_name() == "obj_Player" or body.get_name() == "companionTemplate"):
+		return true;
+	else:
+		return false;

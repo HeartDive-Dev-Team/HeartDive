@@ -19,6 +19,7 @@ func _ready():
 	musicArray[3] = preload("res://Music/HD OST - Spawn_2.ogg");
 	musicArray[3].loop = false;
 	musicArray[4] = preload("res://Music/HD OST - macrofago 2.ogg");
+	musicArray[5] = preload("res://Music/El baile del troleo.ogg");
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

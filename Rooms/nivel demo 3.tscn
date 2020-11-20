@@ -122,14 +122,16 @@ position = Vector2( 464, 592 )
 [node name="obj_Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 960, 400 )
 
-[node name="AnimatedSprite" parent="obj_Player" index="1"]
-frame = 5
-
 [node name="Camera2D" parent="obj_Player" index="3"]
 limit_left = -576
 limit_top = -32
 limit_right = 1024
 limit_bottom = 736
+
+[node name="spawnPoint2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1000, 632 )
+myID = 1
+flipChar = true
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
@@ -161,11 +163,6 @@ targetSpawn = 1
 
 [node name="spawnPoint" parent="." instance=ExtResource( 10 )]
 position = Vector2( 959, 408 )
-
-[node name="spawnPoint2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1000, 632 )
-myID = 1
-flipChar = true
 
 [editable path="tiles-Tutorial"]
 

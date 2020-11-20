@@ -9,6 +9,8 @@ onready var arrow = get_node("selectionArrow");
 onready var FadeOut = get_node("FadeOut");
 var roomGoto = "";
 var soundTest = 0;
+var soundTestLog = [0, 0, 0, 0, 0, 0];
+var soundTestLogIndex = 0;
 
 onready var lbl_musicVol = get_node("Texts/Information/Music/lbl_musicVol");
 onready var lbl_SFXVol = get_node("Texts/Information/lbl_SFXVol");
@@ -112,7 +114,16 @@ func _process(delta):
 					lbl_SFXVol.text = convertMusicVolume(gvar.G_SFXVolume);
 					lbl_SFXVol.modulate = Color(1,1,0);
 				3:
+					#Change the song
 					MusicPlayer.changeSong(soundTest);
+					#Sound Test secret codes
+					soundTestLog[soundTestLogIndex] = soundTest;
+					if(soundTestLogIndex < 5):
+						soundTestLogIndex += 1;
+					else:
+						soundTestLogIndex = 0;
+					checkSoundTestCheats();
+					#Go back
 					phase = 0;
 				4:
 					$cancelSFX.play();
@@ -138,3 +149,19 @@ func convertMusicVolume(volume):
 			return "OFF"
 		_:
 			return "MIN";
+			
+func checkSoundTestCheats():
+	#Go to AnotherRoom
+	if(soundTestLog == [1, 2, 1, 4, 0, 0]):
+		get_node("cancelSFX").play();
+		FadeOut.activate();
+		MusicPlayer.stopSong();
+		RoomChanger.activate("res://Rooms/anotherScene.tscn", 60);
+		active = false;
+	#Go to demo 2 room
+	if(soundTestLog == [3, 2, 1, 2, 1, 0]):
+		get_node("cancelSFX").play();
+		FadeOut.activate();
+		MusicPlayer.stopSong();
+		RoomChanger.activate("res://Rooms/nivel demo 2.tscn", 60);
+		active = false;

@@ -146,6 +146,7 @@ bus = "SFX"
 
 [node name="FadeOut" parent="." instance=ExtResource( 8 )]
 visible = false
+opacitySpeed = 0.1
 
 [node name="FadeIn-Classic" parent="." instance=ExtResource( 10 )]
 visible = false
